@@ -4,6 +4,17 @@ import { BookOpen, Star, Moon, ArrowUp, ChevronDown, ChevronUp } from "lucide-re
 import type { NatalChart, PlanetPosition } from "@shared/schema";
 import interpretations from "../../../server/data/interpretations.json";
 
+// Helper function to get ordinal suffix
+function getOrdinal(num: number): string {
+  if (num >= 11 && num <= 13) return `${num}th`;
+  switch (num % 10) {
+    case 1: return `${num}st`;
+    case 2: return `${num}nd`;
+    case 3: return `${num}rd`;
+    default: return `${num}th`;
+  }
+}
+
 interface InterpretationsProps {
   chart: NatalChart;
 }
@@ -39,14 +50,14 @@ export default function Interpretations({ chart }: InterpretationsProps) {
         else if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house gives you natural authority and career success, but you may struggle with work-life balance.`);
         else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house means you define yourself through relationships, but may lose your identity in partnerships.`);
         else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house makes you highly intuitive and spiritual, but you may struggle with self-confidence.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences your core identity in unique ways.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences your core identity in unique ways.`);
       }
       
       if (planet.name === "moon") {
         if (house === 4) insights.push(`Your ${planetName} in ${sign} in the 4th house makes you deeply emotional and family-oriented, but you may be overly sensitive to criticism.`);
         else if (house === 8) insights.push(`Your ${planetName} in ${sign} in the 8th house gives you powerful intuition and emotional depth, but you may struggle with trust issues.`);
         else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house makes you excellent with groups and friendships, but you may neglect intimate relationships.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house shapes your emotional patterns and needs.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house shapes your emotional patterns and needs.`);
       }
       
       if (planet.name === "mars") {
@@ -54,35 +65,35 @@ export default function Interpretations({ chart }: InterpretationsProps) {
         else if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house gives you mental strength and communication power, but you may be argumentative or restless.`);
         else if (house === 6) insights.push(`Your ${planetName} in ${sign} in the 6th house makes you hardworking and disciplined, but you may be overly critical or stressed about details.`);
         else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house gives you hidden strength and spiritual warrior qualities, but you may suppress your anger unhealthily.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences how you take action and assert yourself.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences how you take action and assert yourself.`);
       }
       
       if (planet.name === "venus") {
         if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house gives you natural ability to attract money and luxury, but you may overspend or be materialistic.`);
         else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house makes you charming and attractive to partners, but you may become too dependent on relationships.`);
         else if (house === 5) insights.push(`Your ${planetName} in ${sign} in the 5th house gives you artistic talents and romantic nature, but you may be overly dramatic in love.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences your values and relationship style.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences your values and relationship style.`);
       }
       
       if (planet.name === "mercury") {
         if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house makes you an excellent communicator and quick thinker, but you may talk too much or spread gossip.`);
         else if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house gives you wisdom and teaching abilities, but you may be preachy or dogmatic.`);
         else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you intelligent and articulate, but you may overthink or appear nervous.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house shapes how you think and communicate.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house shapes how you think and communicate.`);
       }
       
       if (planet.name === "jupiter") {
         if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house brings natural wisdom and good fortune through higher learning, but you may be overconfident or judgmental.`);
         else if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house attracts wealth and abundance, but you may become greedy or overindulgent.`);
         else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house brings luck through friendships and networks, but you may have unrealistic expectations.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house brings expansion and opportunities to that life area.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house brings expansion and opportunities to that life area.`);
       }
       
       if (planet.name === "saturn") {
         if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house demands hard work for career success but brings lasting achievement and respect.`);
         else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house may delay marriage but brings mature, stable partnerships when ready.`);
         else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you serious and responsible but may cause self-doubt or appearing too stern.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house teaches important life lessons through challenges in that area.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house teaches important life lessons through challenges in that area.`);
       }
     });
     

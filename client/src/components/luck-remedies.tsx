@@ -4,6 +4,17 @@ import { Badge } from "@/components/ui/badge";
 import { Sparkles, Gift, Star, Sun, Moon } from "lucide-react";
 import { PlanetPosition, AspectData, HousePosition } from "@shared/schema";
 
+// Helper function to get ordinal suffix
+function getOrdinal(num: number): string {
+  if (num >= 11 && num <= 13) return `${num}th`;
+  switch (num % 10) {
+    case 1: return `${num}st`;
+    case 2: return `${num}nd`;
+    case 3: return `${num}rd`;
+    default: return `${num}th`;
+  }
+}
+
 interface LuckRemediesProps {
   planets: PlanetPosition[];
   aspects: AspectData[];
@@ -33,12 +44,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         if (sign === "sagittarius" || sign === "cancer" || sign === "pisces") {
           remedyList.push({
             title: `${planetName} Blessings`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural luck and expansion.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings natural luck and expansion through this auspicious placement.`,
             practices: [
-              "Wear yellow or gold clothing on Thursdays",
+              `Wear yellow or gold on Thursdays to honor your ${sign} Jupiter`,
               "Donate to educational causes or temples",
               "Practice gratitude daily and help those in need",
-              "Study sacred texts or pursue higher learning"
+              `Focus on ${getOrdinal(house)} house opportunities for growth`
             ],
             icon: Gift,
             color: "text-yellow-600"
@@ -46,12 +57,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         } else if (house === 9 || house === 11 || house === 1 || house === 5) {
           remedyList.push({
             title: `${planetName} Fortune Enhancement`,
-            description: `Your ${planetName} in the ${house}th house brings opportunities for growth and luck.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for growth and luck through this specific placement.`,
             practices: [
-              "Light a yellow candle on Thursdays",
+              `Light a yellow candle on Thursdays for your ${sign} Jupiter`,
               "Feed birds or animals regularly",
               "Practice generosity and charitable giving",
-              "Meditate on expansion and abundance"
+              `Focus on ${getOrdinal(house)} house themes for abundance`
             ],
             icon: Star,
             color: "text-yellow-600"
@@ -60,7 +71,7 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
           // General Jupiter remedy for any other placement
           remedyList.push({
             title: `${planetName} Wisdom Activation`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings opportunities for growth through wisdom and learning.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for growth through wisdom and learning.`,
             practices: [
               "Read inspiring books on Thursdays",
               "Practice acts of kindness and generosity",
@@ -78,11 +89,11 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         if (house === 2 || house === 7 || house === 11 || house === 1 || house === 4) {
           remedyList.push({
             title: `${planetName} Harmony Ritual`,
-            description: `Your ${planetName} in the ${house}th house enhances attraction and relationships.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house enhances attraction and relationships in your unique way.`,
             practices: [
-              "Wear white or light pink on Fridays",
+              `Wear white or light pink on Fridays to honor your ${sign} Venus`,
               "Surround yourself with beautiful flowers",
-              "Practice acts of kindness and beauty",
+              `Focus on ${getOrdinal(house)} house themes in relationships`,
               "Listen to harmonious music daily"
             ],
             icon: Sparkles,
@@ -105,7 +116,7 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
           // General Venus remedy for any other placement
           remedyList.push({
             title: `${planetName} Love & Prosperity`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings opportunities for love, beauty, and material prosperity.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for love, beauty, and material prosperity.`,
             practices: [
               "Appreciate beauty in your daily life",
               "Practice loving-kindness meditation",
@@ -123,11 +134,11 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         if (house === 1 || house === 9 || house === 10 || house === 5 || house === 11) {
           remedyList.push({
             title: `${planetName} Power Activation`,
-            description: `Your ${planetName} in the ${house}th house brings leadership and authority.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings leadership and authority unique to this powerful placement.`,
             practices: [
-              "Face the rising sun and practice gratitude",
+              `Face the rising sun and honor your ${sign.charAt(0).toUpperCase() + sign.slice(1)} energy`,
               "Wear red, orange, or copper colors on Sundays",
-              "Practice confidence-building exercises",
+              `Focus on ${getOrdinal(house)} house themes in your leadership`,
               "Light a lamp or candle during sunset"
             ],
             icon: Sun,
@@ -150,11 +161,11 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
           // General Sun remedy for any other placement  
           remedyList.push({
             title: `${planetName} Vitality Boost`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings life force energy and personal power unique to this placement.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings life force energy and personal power unique to this placement.`,
             practices: [
               `Spend time in sunlight daily to honor your ${sign} Sun`,
               "Wear warm colors on Sundays",
-              `Practice positive affirmations about your ${house}th house themes`,
+              `Practice positive affirmations about your ${getOrdinal(house)} house themes`,
               "Engage in activities that boost confidence"
             ],
             icon: Sun,
@@ -168,12 +179,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         if (house === 4 || house === 8 || house === 1 || house === 9 || sign === "cancer") {
           remedyList.push({
             title: `${planetName} Intuition Enhancement`,
-            description: `Your ${planetName} placement enhances intuition and emotional depth.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house enhances intuition and emotional depth through this special combination.`,
             practices: [
-              "Practice moon gazing on full moon nights",
+              `Practice moon gazing while connecting with your ${sign} Moon energy`,
               "Wear white or silver on Mondays",
               "Keep fresh water near your bed",
-              "Practice meditation with moonstone"
+              `Work with ${getOrdinal(house)} house themes in meditation`
             ],
             icon: Moon,
             color: "text-blue-600"
@@ -195,12 +206,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
           // General Moon remedy for any other placement
           remedyList.push({
             title: `${planetName} Inner Peace`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings emotional wisdom and intuitive insights specific to this combination.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings emotional wisdom and intuitive insights specific to this combination.`,
             practices: [
               `Practice mindfulness meditation on Mondays, focusing on your ${sign} Moon energy`,
               "Honor your emotional rhythms",
               "Wear calming colors like white or blue",
-              `Work with ${house}th house themes in your emotional healing`
+              `Work with ${getOrdinal(house)} house themes in your emotional healing`
             ],
             icon: Moon,
             color: "text-blue-600"
@@ -213,12 +224,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
         if (sign === "aries" || sign === "scorpio" || house === 1 || house === 6 || house === 10) {
           remedyList.push({
             title: `${planetName} Energy Boost`,
-            description: `Your ${planetName} placement brings courage and vitality.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings courage and vitality in a distinctive way.`,
             practices: [
-              "Exercise regularly, especially on Tuesdays",
+              `Exercise regularly on Tuesdays, channeling your ${sign} Mars energy`,
               "Wear red coral or red clothing",
               "Practice martial arts or physical activities",
-              "Donate red items to those in need"
+              `Apply your energy to ${getOrdinal(house)} house matters`
             ],
             icon: Sparkles,
             color: "text-red-600"
@@ -227,12 +238,12 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
           // General Mars remedy for any other placement
           remedyList.push({
             title: `${planetName} Action Power`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings dynamic energy and the courage to take action in unique ways.`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings dynamic energy and the courage to take action in unique ways.`,
             practices: [
               `Channel your ${sign} Mars energy into productive activities`,
               "Practice physical exercise on Tuesdays",
               "Wear red accessories for confidence",
-              `Take decisive action on ${house}th house matters`
+              `Take decisive action on ${getOrdinal(house)} house matters`
             ],
             icon: Sparkles,
             color: "text-red-600"
