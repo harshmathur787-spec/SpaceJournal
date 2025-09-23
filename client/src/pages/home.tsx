@@ -7,6 +7,7 @@ import HousesDisplay from "@/components/houses-display";
 import AspectsDisplay from "@/components/aspects-display";
 import Interpretations from "@/components/interpretations";
 import ChartSummary from "@/components/chart-summary";
+import { AdvicePanel } from "@/components/advice-panel";
 import { Button } from "@/components/ui/button";
 import { Star, BookOpen, Share2, Menu } from "lucide-react";
 import type { NatalChart } from "@shared/schema";
@@ -153,6 +154,17 @@ export default function Home() {
             <Interpretations chart={selectedChart} />
           </section>
         )}
+
+        {/* Life Guidance Section */}
+        {selectedChart && selectedChart.planetaryData && selectedChart.aspectsData && selectedChart.housesData ? (
+          <section className="mt-12">
+            <AdvicePanel 
+              planets={Array.isArray(selectedChart.planetaryData) ? selectedChart.planetaryData : []}
+              aspects={Array.isArray(selectedChart.aspectsData) ? selectedChart.aspectsData : []}
+              houses={Array.isArray(selectedChart.housesData) ? selectedChart.housesData : []}
+            />
+          </section>
+        ) : null}
       </main>
 
       {/* Footer */}

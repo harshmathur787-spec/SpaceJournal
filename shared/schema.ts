@@ -103,3 +103,88 @@ export type NatalChart = typeof natalCharts.$inferSelect;
 export type InsertNatalChart = z.infer<typeof insertNatalChartSchema>;
 export type BirthData = z.infer<typeof birthDataSchema>;
 export type LocationResult = z.infer<typeof locationResultSchema>;
+
+// Life advice system types
+export type AdviceCategory = "finance" | "partner" | "career" | "health";
+
+// Condition types for advice rules
+export interface PlacementCondition {
+  type: "placement";
+  planet: string;
+  house?: number;
+  sign?: ZodiacSign;
+}
+
+export interface AspectCondition {
+  type: "aspect";
+  planet1: string;
+  planet2: string;
+  aspectType: "conjunction" | "opposition" | "trine" | "square" | "sextile" | "harmonious" | "challenging";
+  maxOrb?: number;
+}
+
+export interface HouseEmphasisCondition {
+  type: "houseEmphasis";
+  house: number;
+  minPlanets: number;
+}
+
+export interface RetrogradeCondition {
+  type: "retrograde";
+  planet: string;
+  isRetrograde: boolean;
+}
+
+export interface RulerPlacementCondition {
+  type: "rulerPlacement";
+  houseRuled: number;
+  rulerHouse?: number;
+  rulerSign?: ZodiacSign;
+}
+
+export interface SignEmphasisCondition {
+  type: "signEmphasis";
+  sign: ZodiacSign;
+  minPlanets: number;
+}
+
+export interface ElementBalanceCondition {
+  type: "elementBalance";
+  element: "fire" | "earth" | "air" | "water";
+  minPercentage: number;
+}
+
+export type Condition = 
+  | PlacementCondition 
+  | AspectCondition 
+  | HouseEmphasisCondition 
+  | RetrogradeCondition 
+  | RulerPlacementCondition 
+  | SignEmphasisCondition 
+  | ElementBalanceCondition;
+
+// Advice rule structure
+export interface AdviceRule {
+  id: string;
+  category: AdviceCategory;
+  conditions: Condition[];
+  effect: "positive" | "challenge" | "neutral";
+  weight: number; // 1-5, higher means more important
+  advice: string;
+  tags?: string[];
+}
+
+// Advice result item
+export interface AdviceItem {
+  advice: string;
+  effect: "positive" | "challenge" | "neutral";
+  weight: number;
+  evidence: string[];
+}
+
+// Advice result for a category
+export interface AdviceResult {
+  category: AdviceCategory;
+  score: number; // 0-100, calculated from weighted positive/negative effects
+  items: AdviceItem[];
+}
