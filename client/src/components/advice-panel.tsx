@@ -13,7 +13,8 @@ import {
   Heart,
   DollarSign,
   Briefcase,
-  Activity
+  Activity,
+  Sparkles
 } from "lucide-react";
 import { generateAdvice } from "@/lib/astrology-utils";
 import { PlanetPosition, AspectData, HousePosition, AdviceResult, AdviceCategory } from "@shared/schema";
@@ -49,6 +50,12 @@ const categoryConfig = {
     description: "Physical wellness and vitality",
     icon: Activity,
     color: "text-orange-600"
+  },
+  luck: {
+    title: "Luck & Remedies",
+    description: "Fortune enhancement and remedial measures",
+    icon: Sparkles,
+    color: "text-purple-600"
   }
 };
 
@@ -204,7 +211,8 @@ export function AdvicePanel({ planets, aspects, houses }: AdvicePanelProps) {
         finance: { category: "finance", score: 50, items: [] },
         partner: { category: "partner", score: 50, items: [] },
         career: { category: "career", score: 50, items: [] },
-        health: { category: "health", score: 50, items: [] }
+        health: { category: "health", score: 50, items: [] },
+        luck: { category: "luck", score: 50, items: [] }
       } as Record<AdviceCategory, AdviceResult>;
     }
   }, [planets, aspects, houses]);
@@ -219,7 +227,7 @@ export function AdvicePanel({ planets, aspects, houses }: AdvicePanelProps) {
       </CardHeader>
       <CardContent>
         <Tabs value={selectedCategory} onValueChange={(value) => setSelectedCategory(value as AdviceCategory)}>
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger 
               value="finance" 
               className="text-xs"
@@ -251,6 +259,14 @@ export function AdvicePanel({ planets, aspects, houses }: AdvicePanelProps) {
             >
               <Activity className="h-4 w-4 mr-1" />
               Health
+            </TabsTrigger>
+            <TabsTrigger 
+              value="luck" 
+              className="text-xs"
+              data-testid="button-advice-luck"
+            >
+              <Sparkles className="h-4 w-4 mr-1" />
+              Luck
             </TabsTrigger>
           </TabsList>
 

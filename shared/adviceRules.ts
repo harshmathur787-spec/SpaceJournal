@@ -224,6 +224,116 @@ export const adviceRules: AdviceRule[] = [
     weight: 3,
     advice: "Jupiter in health house generally protects your well-being. Watch for overindulgence and maintain moderation in diet.",
     tags: ["jupiter", "6th-house", "protection"]
+  },
+
+  // ===== LUCK & REMEDIES RULES =====
+  {
+    id: "luck-jupiter-strong",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Jupiter", sign: "sagittarius" }],
+    effect: "positive",
+    weight: 5,
+    advice: "Jupiter in Sagittarius brings natural luck and expansion. Remedy: Wear yellow on Thursdays and donate to educational causes to amplify your fortune.",
+    tags: ["jupiter", "sagittarius", "natural-luck"]
+  },
+  {
+    id: "luck-jupiter-exalted",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Jupiter", sign: "cancer" }],
+    effect: "positive", 
+    weight: 5,
+    advice: "Exalted Jupiter brings spiritual and material blessings. Remedy: Practice gratitude daily and help those in need to multiply your good fortune.",
+    tags: ["jupiter", "cancer", "exalted"]
+  },
+  {
+    id: "luck-venus-trine-jupiter",
+    category: "luck",
+    conditions: [{ type: "aspect", planet1: "Venus", planet2: "Jupiter", aspectType: "harmonious" }],
+    effect: "positive",
+    weight: 4,
+    advice: "Venus-Jupiter harmony brings luck in relationships and finances. Remedy: Surround yourself with beauty, practice acts of kindness, and wear white or cream colors.",
+    tags: ["venus", "jupiter", "trine", "harmony"]
+  },
+  {
+    id: "luck-sun-9th",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Sun", house: 9 }],
+    effect: "positive",
+    weight: 4,
+    advice: "Sun in the 9th house brings luck through higher learning and spirituality. Remedy: Study sacred texts, practice meditation, and travel to expand your horizons.",
+    tags: ["sun", "9th-house", "wisdom"]
+  },
+  {
+    id: "luck-mercury-gemini",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Mercury", sign: "gemini" }],
+    effect: "positive",
+    weight: 3,
+    advice: "Mercury in Gemini brings luck through communication and learning. Remedy: Practice deep breathing exercises, wear green, and keep learning new skills daily.",
+    tags: ["mercury", "gemini", "communication"]
+  },
+  {
+    id: "luck-saturn-challenges",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Saturn", house: 12 }],
+    effect: "challenge",
+    weight: 3,
+    advice: "Saturn in 12th house may bring hidden obstacles. Remedy: Practice patience, do charitable work in secret, and chant Saturn mantras on Saturdays.",
+    tags: ["saturn", "12th-house", "obstacles"]
+  },
+  {
+    id: "luck-rahu-strong",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "North Node", house: 11 }],
+    effect: "positive",
+    weight: 3,
+    advice: "North Node in 11th house brings sudden gains and networking luck. Remedy: Join group activities, help friends achieve their goals, and practice technological skills.",
+    tags: ["north-node", "11th-house", "gains"]
+  },
+  {
+    id: "luck-full-moon-birth",
+    category: "luck",
+    conditions: [{ type: "aspect", planet1: "Sun", planet2: "Moon", aspectType: "challenging" }],
+    effect: "neutral",
+    weight: 2,
+    advice: "Full Moon energy brings intensity and potential. Remedy: Work with lunar cycles, practice moon gazing, and use moonstone to balance energies.",
+    tags: ["sun", "moon", "full-moon", "cycles"]
+  },
+  {
+    id: "luck-fire-element",
+    category: "luck",
+    conditions: [{ type: "elementBalance", element: "fire", minPercentage: 40 }],
+    effect: "positive",
+    weight: 3,
+    advice: "Strong Fire element brings leadership luck and quick manifestation. Remedy: Light candles during prayers, wear red or orange, and take action on your ideas quickly.",
+    tags: ["fire", "leadership", "manifestation"]
+  },
+  {
+    id: "luck-weak-mercury",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Mercury", house: 12 }],
+    effect: "challenge",
+    weight: 2,
+    advice: "Mercury in 12th house may cause communication confusion. Remedy: Practice clear speech, donate books to libraries, and wear emerald or green gemstones.",
+    tags: ["mercury", "12th-house", "communication"]
+  },
+  {
+    id: "luck-venus-2nd-11th",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Venus", house: 11 }],
+    effect: "positive",
+    weight: 4,
+    advice: "Venus in 11th house brings luck through social connections and artistic pursuits. Remedy: Appreciate art and beauty, maintain friendships, and wear white on Fridays.",
+    tags: ["venus", "11th-house", "social-luck"]
+  },
+  {
+    id: "luck-mars-aries",
+    category: "luck",
+    conditions: [{ type: "placement", planet: "Mars", sign: "aries" }],
+    effect: "positive",
+    weight: 4,
+    advice: "Mars in Aries brings courage and pioneering luck. Remedy: Exercise regularly, practice martial arts, and wear red coral to enhance your warrior energy.",
+    tags: ["mars", "aries", "courage"]
   }
 ];
 

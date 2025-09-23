@@ -360,7 +360,7 @@ export function generateAdvice(
   const resultsByCategory: { [category: string]: AdviceResult } = {};
 
   // Initialize results for all categories
-  const categories = ["finance", "partner", "career", "health"];
+  const categories = ["finance", "partner", "career", "health", "luck"];
   categories.forEach(category => {
     resultsByCategory[category] = {
       category: category as any,
