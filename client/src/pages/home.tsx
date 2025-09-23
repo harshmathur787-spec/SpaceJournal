@@ -8,7 +8,7 @@ import AspectsDisplay from "@/components/aspects-display";
 import Interpretations from "@/components/interpretations";
 import ChartSummary from "@/components/chart-summary";
 import { AdvicePanel } from "@/components/advice-panel";
-import LuckRemedies from "@/components/luck-remedies";
+import LuckRemedies from "@/components/luck-remedies-new";
 import { Button } from "@/components/ui/button";
 import { Star, BookOpen, Share2, Menu, MessageCircle } from "lucide-react";
 import type { NatalChart } from "@shared/schema";
@@ -192,9 +192,7 @@ export default function Home() {
         {/* Luck & Remedies Section */}
         {selectedChart ? (
           <section className="mt-12">
-            <LuckRemedies 
-              remedies={Array.isArray(selectedChart.luckRemedies) ? selectedChart.luckRemedies : []}
-            />
+            <LuckRemedies chart={selectedChart} />
           </section>
         ) : null}
       </main>
