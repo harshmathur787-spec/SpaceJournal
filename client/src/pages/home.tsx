@@ -8,6 +8,7 @@ import AspectsDisplay from "@/components/aspects-display";
 import Interpretations from "@/components/interpretations";
 import ChartSummary from "@/components/chart-summary";
 import { AdvicePanel } from "@/components/advice-panel";
+import LuckRemedies from "@/components/luck-remedies";
 import { Button } from "@/components/ui/button";
 import { Star, BookOpen, Share2, Menu } from "lucide-react";
 import type { NatalChart } from "@shared/schema";
@@ -159,6 +160,17 @@ export default function Home() {
         {selectedChart && selectedChart.planetaryData && selectedChart.aspectsData && selectedChart.housesData ? (
           <section className="mt-12">
             <AdvicePanel 
+              planets={Array.isArray(selectedChart.planetaryData) ? selectedChart.planetaryData : []}
+              aspects={Array.isArray(selectedChart.aspectsData) ? selectedChart.aspectsData : []}
+              houses={Array.isArray(selectedChart.housesData) ? selectedChart.housesData : []}
+            />
+          </section>
+        ) : null}
+
+        {/* Luck & Remedies Section */}
+        {selectedChart && selectedChart.planetaryData && selectedChart.aspectsData && selectedChart.housesData ? (
+          <section className="mt-12">
+            <LuckRemedies 
               planets={Array.isArray(selectedChart.planetaryData) ? selectedChart.planetaryData : []}
               aspects={Array.isArray(selectedChart.aspectsData) ? selectedChart.aspectsData : []}
               houses={Array.isArray(selectedChart.housesData) ? selectedChart.housesData : []}

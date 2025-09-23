@@ -105,7 +105,7 @@ export type BirthData = z.infer<typeof birthDataSchema>;
 export type LocationResult = z.infer<typeof locationResultSchema>;
 
 // Life advice system types
-export type AdviceCategory = "finance" | "partner" | "career" | "health" | "luck";
+export type AdviceCategory = "finance" | "partner" | "career" | "health";
 
 // Condition types for advice rules
 export interface PlacementCondition {

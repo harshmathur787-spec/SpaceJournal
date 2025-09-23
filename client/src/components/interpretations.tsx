@@ -21,56 +21,73 @@ export default function Interpretations({ chart }: InterpretationsProps) {
   const houses = chart.housesData as any[] | null;
   const ascendant = houses?.[0]; // First house cusp is the ascendant
 
-  // Generate personalized summary
+  // Generate real personalized summary with specific planetary insights
   const getPersonalizedSummary = () => {
-    if (!sun || !moon || !ascendant) return "Complete chart data not available";
+    if (!planets || planets.length === 0) return "Chart data not available";
     
-    const sunSign = sun.zodiacSign;
-    const moonSign = moon.zodiacSign;
-    const risingSign = ascendant.zodiacSign;
+    let insights: string[] = [];
     
-    // Count elements for personality insights
-    const elementCounts: Record<string, number> = { fire: 0, earth: 0, air: 0, water: 0 };
+    // Analyze specific planetary positions
     planets.forEach(planet => {
-      const sign = planet.zodiacSign;
-      if (['aries', 'leo', 'sagittarius'].includes(sign)) elementCounts.fire++;
-      else if (['taurus', 'virgo', 'capricorn'].includes(sign)) elementCounts.earth++;
-      else if (['gemini', 'libra', 'aquarius'].includes(sign)) elementCounts.air++;
-      else if (['cancer', 'scorpio', 'pisces'].includes(sign)) elementCounts.water++;
+      const planetName = planet.name.charAt(0).toUpperCase() + planet.name.slice(1);
+      const sign = planet.zodiacSign.charAt(0).toUpperCase() + planet.zodiacSign.slice(1);
+      const house = planet.house;
+      
+      // Generate specific insights based on planet-house combinations
+      if (planet.name === "sun") {
+        if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you naturally confident and leadership-oriented, but you may come across as too strong to others.`);
+        else if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house gives you natural authority and career success, but you may struggle with work-life balance.`);
+        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house means you define yourself through relationships, but may lose your identity in partnerships.`);
+        else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house makes you highly intuitive and spiritual, but you may struggle with self-confidence.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences your core identity in unique ways.`);
+      }
+      
+      if (planet.name === "moon") {
+        if (house === 4) insights.push(`Your ${planetName} in ${sign} in the 4th house makes you deeply emotional and family-oriented, but you may be overly sensitive to criticism.`);
+        else if (house === 8) insights.push(`Your ${planetName} in ${sign} in the 8th house gives you powerful intuition and emotional depth, but you may struggle with trust issues.`);
+        else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house makes you excellent with groups and friendships, but you may neglect intimate relationships.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house shapes your emotional patterns and needs.`);
+      }
+      
+      if (planet.name === "mars") {
+        if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you a natural fighter with high energy, but you may be too aggressive or impatient.`);
+        else if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house gives you mental strength and communication power, but you may be argumentative or restless.`);
+        else if (house === 6) insights.push(`Your ${planetName} in ${sign} in the 6th house makes you hardworking and disciplined, but you may be overly critical or stressed about details.`);
+        else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house gives you hidden strength and spiritual warrior qualities, but you may suppress your anger unhealthily.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences how you take action and assert yourself.`);
+      }
+      
+      if (planet.name === "venus") {
+        if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house gives you natural ability to attract money and luxury, but you may overspend or be materialistic.`);
+        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house makes you charming and attractive to partners, but you may become too dependent on relationships.`);
+        else if (house === 5) insights.push(`Your ${planetName} in ${sign} in the 5th house gives you artistic talents and romantic nature, but you may be overly dramatic in love.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house influences your values and relationship style.`);
+      }
+      
+      if (planet.name === "mercury") {
+        if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house makes you an excellent communicator and quick thinker, but you may talk too much or spread gossip.`);
+        else if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house gives you wisdom and teaching abilities, but you may be preachy or dogmatic.`);
+        else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you intelligent and articulate, but you may overthink or appear nervous.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house shapes how you think and communicate.`);
+      }
+      
+      if (planet.name === "jupiter") {
+        if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house brings natural wisdom and good fortune through higher learning, but you may be overconfident or judgmental.`);
+        else if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house attracts wealth and abundance, but you may become greedy or overindulgent.`);
+        else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house brings luck through friendships and networks, but you may have unrealistic expectations.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house brings expansion and opportunities to that life area.`);
+      }
+      
+      if (planet.name === "saturn") {
+        if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house demands hard work for career success but brings lasting achievement and respect.`);
+        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house may delay marriage but brings mature, stable partnerships when ready.`);
+        else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you serious and responsible but may cause self-doubt or appearing too stern.`);
+        else insights.push(`Your ${planetName} in ${sign} in the ${house}th house teaches important life lessons through challenges in that area.`);
+      }
     });
     
-    const dominantElement = Object.entries(elementCounts).reduce((a, b) => 
-      elementCounts[a[0]] > elementCounts[b[0]] ? a : b)[0];
-    
-    const elementDescriptions: Record<string, string> = {
-      fire: "passionate and dynamic",
-      earth: "practical and grounded", 
-      air: "intellectual and communicative",
-      water: "intuitive and emotional"
-    };
-    
-    const sunTraits: Record<string, string> = {
-      aries: 'pioneering spirit', taurus: 'steady determination', gemini: 'curious adaptability',
-      cancer: 'nurturing sensitivity', leo: 'creative confidence', virgo: 'practical perfectionism',
-      libra: 'harmonious balance', scorpio: 'intense transformation', sagittarius: 'adventurous wisdom',
-      capricorn: 'ambitious structure', aquarius: 'innovative independence', pisces: 'compassionate intuition'
-    };
-    
-    const moonTraits: Record<string, string> = {
-      aries: 'fiery spontaneity', taurus: 'comfort-seeking stability', gemini: 'mental curiosity',
-      cancer: 'deep emotional connection', leo: 'dramatic warmth', virgo: 'analytical care',
-      libra: 'relationship harmony', scorpio: 'psychological depth', sagittarius: 'philosophical optimism',
-      capricorn: 'responsible seriousness', aquarius: 'humanitarian detachment', pisces: 'empathetic flow'
-    };
-    
-    const risingTraits: Record<string, string> = {
-      aries: 'bold, energetic', taurus: 'calm, reliable', gemini: 'quick, versatile',
-      cancer: 'protective, caring', leo: 'confident, magnetic', virgo: 'helpful, precise',
-      libra: 'charming, diplomatic', scorpio: 'intense, mysterious', sagittarius: 'optimistic, adventurous',
-      capricorn: 'serious, ambitious', aquarius: 'unique, innovative', pisces: 'gentle, intuitive'
-    };
-    
-    return `You are a ${sunSign} Sun with ${moonSign} Moon and ${risingSign} rising, creating a unique blend of energies. Your ${sunSign} Sun drives your core identity with ${sunTraits[sunSign] || 'unique traits'}, while your ${moonSign} Moon shapes your emotional nature with ${moonTraits[moonSign] || 'distinct qualities'}. Your ${risingSign} rising shows the world your ${risingTraits[risingSign] || 'special characteristics'} nature. With a strong ${dominantElement} influence, you approach life in a ${elementDescriptions[dominantElement] || 'balanced'} way.`;
+    // Take the most significant insights (limit to 3-4 for readability)
+    return insights.slice(0, 3).join(" ");
   };
 
   const getSunInterpretation = () => {

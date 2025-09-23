@@ -214,7 +214,10 @@ export function evaluateCondition(condition: Condition, features: ChartFeatures)
     case "placement":
       const normalizedPlanetName = condition.planet.charAt(0).toUpperCase() + condition.planet.slice(1).toLowerCase();
       const planet = features.planetByName[normalizedPlanetName];
-      if (!planet) return false;
+      if (!planet) {
+        // console.log(`Planet not found: ${condition.planet} (normalized: ${normalizedPlanetName}), available:`, Object.keys(features.planetByName));
+        return false;
+      }
       
       if (condition.house && planet.house !== condition.house) return false;
       if (condition.sign && planet.zodiacSign !== condition.sign) return false;
@@ -360,7 +363,7 @@ export function generateAdvice(
   const resultsByCategory: { [category: string]: AdviceResult } = {};
 
   // Initialize results for all categories
-  const categories = ["finance", "partner", "career", "health", "luck"];
+  const categories = ["finance", "partner", "career", "health"];
   categories.forEach(category => {
     resultsByCategory[category] = {
       category: category as any,
@@ -369,11 +372,15 @@ export function generateAdvice(
     };
   });
 
+  // Optional debug logging (can be removed in production)
+  // console.log("Chart features:", features);
+
   // Evaluate each rule
   rules.forEach(rule => {
     const evaluation = evaluateRule(rule, features);
     
     if (evaluation.matches) {
+      // console.log(`Rule matched: ${rule.id}`, evaluation.evidence);
       const item: AdviceItem = {
         advice: rule.advice,
         effect: rule.effect,
@@ -382,6 +389,13 @@ export function generateAdvice(
       };
       
       resultsByCategory[rule.category].items.push(item);
+      
+      // Update score based on rule effect and weight
+      const delta = rule.effect === 'positive' ? rule.weight * 5 : 
+                    rule.effect === 'challenge' ? -rule.weight * 5 : 
+                    rule.weight * 1; // neutral
+      resultsByCategory[rule.category].score = Math.max(0, Math.min(100, 
+        resultsByCategory[rule.category].score + delta));
     }
   });
 

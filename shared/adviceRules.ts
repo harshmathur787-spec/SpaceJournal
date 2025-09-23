@@ -6,7 +6,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "finance-venus-2nd",
     category: "finance",
-    conditions: [{ type: "placement", planet: "Venus", house: 2 }],
+    conditions: [{ type: "placement", planet: "venus", house: 2 }],
     effect: "positive",
     weight: 4,
     advice: "You have natural talent for attracting money and appreciating beautiful things. Focus on careers involving luxury goods, art, or beauty industries.",
@@ -15,7 +15,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "finance-jupiter-2nd",
     category: "finance", 
-    conditions: [{ type: "placement", planet: "Jupiter", house: 2 }],
+    conditions: [{ type: "placement", planet: "jupiter", house: 2 }],
     effect: "positive",
     weight: 5,
     advice: "Jupiter in your money house brings financial luck and expansion. You're likely to prosper through generosity, education, or foreign connections.",
@@ -24,7 +24,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "finance-saturn-2nd",
     category: "finance",
-    conditions: [{ type: "placement", planet: "Saturn", house: 2 }],
+    conditions: [{ type: "placement", planet: "saturn", house: 2 }],
     effect: "challenge",
     weight: 3,
     advice: "Saturn in your money house requires disciplined financial planning. Build wealth slowly through consistent saving and conservative investments.",
@@ -42,7 +42,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "finance-mars-8th",
     category: "finance",
-    conditions: [{ type: "placement", planet: "Mars", house: 8 }],
+    conditions: [{ type: "placement", planet: "mars", house: 8 }],
     effect: "neutral",
     weight: 3,
     advice: "Mars in the 8th house suggests financial transformation through joint resources. Be cautious with investments and debts.",
@@ -62,7 +62,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "partner-venus-7th",
     category: "partner",
-    conditions: [{ type: "placement", planet: "Venus", house: 7 }],
+    conditions: [{ type: "placement", planet: "venus", house: 7 }],
     effect: "positive",
     weight: 5,
     advice: "Venus in your partnership house brings harmonious relationships. You attract loving partners and have natural relationship skills.",
@@ -71,7 +71,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "partner-venus-libra",
     category: "partner",
-    conditions: [{ type: "placement", planet: "Venus", sign: "libra" }],
+    conditions: [{ type: "placement", planet: "venus", sign: "libra" }],
     effect: "positive",
     weight: 4,
     advice: "Venus in Libra gives you refined relationship ideals. You seek balance, beauty, and fairness in partnerships.",
@@ -89,7 +89,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "partner-saturn-7th",
     category: "partner",
-    conditions: [{ type: "placement", planet: "Saturn", house: 7 }],
+    conditions: [{ type: "placement", planet: "saturn", house: 7 }],
     effect: "challenge",
     weight: 3,
     advice: "Saturn in relationships requires patience and commitment. Your partnerships may start later but tend to be stable and long-lasting.",
@@ -98,7 +98,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "partner-moon-cancer",
     category: "partner",
-    conditions: [{ type: "placement", planet: "Moon", sign: "cancer" }],
+    conditions: [{ type: "placement", planet: "moon", sign: "cancer" }],
     effect: "positive",
     weight: 3,
     advice: "Moon in Cancer indicates deep emotional nurturing needs. You seek security and family-oriented partners.",
@@ -118,7 +118,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "career-sun-10th",
     category: "career",
-    conditions: [{ type: "placement", planet: "Sun", house: 10 }],
+    conditions: [{ type: "placement", planet: "sun", house: 10 }],
     effect: "positive",
     weight: 5,
     advice: "Sun in your career house indicates natural leadership abilities. You're meant to shine in public roles and positions of authority.",
@@ -127,7 +127,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "career-mars-10th",
     category: "career",
-    conditions: [{ type: "placement", planet: "Mars", house: 10 }],
+    conditions: [{ type: "placement", planet: "mars", house: 10 }],
     effect: "positive",
     weight: 4,
     advice: "Mars in your career house brings drive and ambition. You excel in competitive fields and action-oriented professions.",
@@ -136,7 +136,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "career-mercury-gemini",
     category: "career",
-    conditions: [{ type: "placement", planet: "Mercury", sign: "gemini" }],
+    conditions: [{ type: "placement", planet: "mercury", sign: "gemini" }],
     effect: "positive",
     weight: 3,
     advice: "Mercury in Gemini enhances communication skills. Consider careers in writing, teaching, media, or technology.",
@@ -145,7 +145,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "career-jupiter-10th",
     category: "career",
-    conditions: [{ type: "placement", planet: "Jupiter", house: 10 }],
+    conditions: [{ type: "placement", planet: "jupiter", house: 10 }],
     effect: "positive",
     weight: 4,
     advice: "Jupiter in career house brings professional growth and recognition. You may excel in education, law, or international business.",
@@ -174,7 +174,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "health-mars-1st",
     category: "health",
-    conditions: [{ type: "placement", planet: "Mars", house: 1 }],
+    conditions: [{ type: "placement", planet: "mars", house: 1 }],
     effect: "positive",
     weight: 4,
     advice: "Mars in your 1st house gives strong vitality and physical energy. You benefit from regular exercise and physical activity.",
@@ -183,7 +183,7 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "health-moon-6th",
     category: "health",
-    conditions: [{ type: "placement", planet: "Moon", house: 6 }],
+    conditions: [{ type: "placement", planet: "moon", house: 6 }],
     effect: "neutral",
     weight: 3,
     advice: "Moon in health house makes you sensitive to daily routines. Your health fluctuates with emotional state - manage stress carefully.",
@@ -219,121 +219,22 @@ export const adviceRules: AdviceRule[] = [
   {
     id: "health-jupiter-6th",
     category: "health",
-    conditions: [{ type: "placement", planet: "Jupiter", house: 6 }],
+    conditions: [{ type: "placement", planet: "jupiter", house: 6 }],
     effect: "positive",
     weight: 3,
     advice: "Jupiter in health house generally protects your well-being. Watch for overindulgence and maintain moderation in diet.",
     tags: ["jupiter", "6th-house", "protection"]
   },
 
-  // ===== LUCK & REMEDIES RULES =====
+  // Test rule to ensure matching works
   {
-    id: "luck-jupiter-strong",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Jupiter", sign: "sagittarius" }],
+    id: "test-sun-exists",
+    category: "finance",
+    conditions: [{ type: "placement", planet: "sun" }],
     effect: "positive",
-    weight: 5,
-    advice: "Jupiter in Sagittarius brings natural luck and expansion. Remedy: Wear yellow on Thursdays and donate to educational causes to amplify your fortune.",
-    tags: ["jupiter", "sagittarius", "natural-luck"]
-  },
-  {
-    id: "luck-jupiter-exalted",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Jupiter", sign: "cancer" }],
-    effect: "positive", 
-    weight: 5,
-    advice: "Exalted Jupiter brings spiritual and material blessings. Remedy: Practice gratitude daily and help those in need to multiply your good fortune.",
-    tags: ["jupiter", "cancer", "exalted"]
-  },
-  {
-    id: "luck-venus-trine-jupiter",
-    category: "luck",
-    conditions: [{ type: "aspect", planet1: "Venus", planet2: "Jupiter", aspectType: "harmonious" }],
-    effect: "positive",
-    weight: 4,
-    advice: "Venus-Jupiter harmony brings luck in relationships and finances. Remedy: Surround yourself with beauty, practice acts of kindness, and wear white or cream colors.",
-    tags: ["venus", "jupiter", "trine", "harmony"]
-  },
-  {
-    id: "luck-sun-9th",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Sun", house: 9 }],
-    effect: "positive",
-    weight: 4,
-    advice: "Sun in the 9th house brings luck through higher learning and spirituality. Remedy: Study sacred texts, practice meditation, and travel to expand your horizons.",
-    tags: ["sun", "9th-house", "wisdom"]
-  },
-  {
-    id: "luck-mercury-gemini",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Mercury", sign: "gemini" }],
-    effect: "positive",
-    weight: 3,
-    advice: "Mercury in Gemini brings luck through communication and learning. Remedy: Practice deep breathing exercises, wear green, and keep learning new skills daily.",
-    tags: ["mercury", "gemini", "communication"]
-  },
-  {
-    id: "luck-saturn-challenges",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Saturn", house: 12 }],
-    effect: "challenge",
-    weight: 3,
-    advice: "Saturn in 12th house may bring hidden obstacles. Remedy: Practice patience, do charitable work in secret, and chant Saturn mantras on Saturdays.",
-    tags: ["saturn", "12th-house", "obstacles"]
-  },
-  {
-    id: "luck-rahu-strong",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "North Node", house: 11 }],
-    effect: "positive",
-    weight: 3,
-    advice: "North Node in 11th house brings sudden gains and networking luck. Remedy: Join group activities, help friends achieve their goals, and practice technological skills.",
-    tags: ["north-node", "11th-house", "gains"]
-  },
-  {
-    id: "luck-full-moon-birth",
-    category: "luck",
-    conditions: [{ type: "aspect", planet1: "Sun", planet2: "Moon", aspectType: "challenging" }],
-    effect: "neutral",
-    weight: 2,
-    advice: "Full Moon energy brings intensity and potential. Remedy: Work with lunar cycles, practice moon gazing, and use moonstone to balance energies.",
-    tags: ["sun", "moon", "full-moon", "cycles"]
-  },
-  {
-    id: "luck-fire-element",
-    category: "luck",
-    conditions: [{ type: "elementBalance", element: "fire", minPercentage: 40 }],
-    effect: "positive",
-    weight: 3,
-    advice: "Strong Fire element brings leadership luck and quick manifestation. Remedy: Light candles during prayers, wear red or orange, and take action on your ideas quickly.",
-    tags: ["fire", "leadership", "manifestation"]
-  },
-  {
-    id: "luck-weak-mercury",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Mercury", house: 12 }],
-    effect: "challenge",
-    weight: 2,
-    advice: "Mercury in 12th house may cause communication confusion. Remedy: Practice clear speech, donate books to libraries, and wear emerald or green gemstones.",
-    tags: ["mercury", "12th-house", "communication"]
-  },
-  {
-    id: "luck-venus-2nd-11th",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Venus", house: 11 }],
-    effect: "positive",
-    weight: 4,
-    advice: "Venus in 11th house brings luck through social connections and artistic pursuits. Remedy: Appreciate art and beauty, maintain friendships, and wear white on Fridays.",
-    tags: ["venus", "11th-house", "social-luck"]
-  },
-  {
-    id: "luck-mars-aries",
-    category: "luck",
-    conditions: [{ type: "placement", planet: "Mars", sign: "aries" }],
-    effect: "positive",
-    weight: 4,
-    advice: "Mars in Aries brings courage and pioneering luck. Remedy: Exercise regularly, practice martial arts, and wear red coral to enhance your warrior energy.",
-    tags: ["mars", "aries", "courage"]
+    weight: 1,
+    advice: "Your Sun placement brings natural vitality and leadership potential.",
+    tags: ["sun", "test"]
   }
 ];
 
