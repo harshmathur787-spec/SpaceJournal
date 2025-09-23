@@ -6,6 +6,7 @@ import PlanetaryPositions from "@/components/planetary-positions";
 import HousesDisplay from "@/components/houses-display";
 import AspectsDisplay from "@/components/aspects-display";
 import Interpretations from "@/components/interpretations";
+import ChartSummary from "@/components/chart-summary";
 import { Button } from "@/components/ui/button";
 import { Star, BookOpen, Share2, Menu } from "lucide-react";
 import type { NatalChart } from "@shared/schema";
@@ -138,6 +139,13 @@ export default function Home() {
             )}
           </div>
         </div>
+
+        {/* Chart Summary Section */}
+        {selectedChart && (
+          <section className="mt-12">
+            <ChartSummary chart={selectedChart} />
+          </section>
+        )}
 
         {/* Detailed Interpretations Section */}
         {selectedChart && (
