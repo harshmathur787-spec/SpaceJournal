@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json"><title>Astro Birth Predictions</title><link rel="stylesheet" href="styles.css"></head>
+<body><header><h1>Astro Birth Predictions</h1></header><main>
+<section class="card">
+<label>Date of Birth<input id="dob" type="date" value="1990-08-05"></label>
+<label>Time of Birth<input id="time" type="time" value="07:30"></label>
+<label>Timezone offset (e.g. 5.5 for IST)<input id="tz" type="number" step="0.25" value="5.5"></label>
+<label>Latitude<input id="lat" type="number" step="0.01" value="19.07"></label>
+<label>Longitude<input id="lon" type="number" step="0.01" value="72.87"></label>
+<button id="run">Compute Natal Chart</button></section>
+<section class="card"><h2>Results</h2><pre id="out">Press Compute</pre></section>
+<section class="card"><h2>Interpretation (basic)</h2><div id="interpret"></div></section></main>
+<script src="natalCalc.js"></script><script>
+document.getElementById('run').onclick = function(){
+  const d = document.getElementById('dob').value.split('-');
+  const t = document.getElementById('time').value.split(':');
+  const tz = parseFloat(document.getElementById('tz').value) || 0;
+  const lat = parseFloat(document.getElementById('lat').value) || 0;
+  const lon = parseFloat(document.getElementById('lon').value) || 0;
+  const year = parseInt(d[0]), month = parseInt(d[1]), day = parseInt(d[2]);
+  const hour = parseInt(t[0]||0), minute = parseInt(t[1]||0);
+  const res = computeNatal(year, month, day, hour, minute, tz, lat, lon);
+  document.getElementById('out').innerText = JSON.stringify(res, null, 2);
+  const interp = `Sun: ${res.sun.zodiac.sign} (${res.sun.zodiac.deg.toFixed(1)}°)\nMoon: ${res.moon.zodiac.sign} (${res.moon.zodiac.deg.toFixed(1)}°)\nAscendant: ${res.ascendant.zodiac.sign} (${res.ascendant.zodiac.deg.toFixed(1)}°)`;
+  document.getElementById('interpret').innerText = interp + "\n\nTip: This is an approximate reading. Use Pro version for detailed analysis.";
+};
+</script></body></html>
