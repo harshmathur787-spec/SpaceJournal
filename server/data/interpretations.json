@@ -1,0 +1,53 @@
+{
+  "planets": {
+    "sun": {
+      "aries": "Your Aries Sun radiates pioneering energy and natural leadership. You approach life with courage, initiative, and an instinct to blaze new trails.",
+      "taurus": "Your Taurus Sun grounds you in practicality and appreciation for life's pleasures. You build steadily toward your goals with determination and patience.",
+      "gemini": "Your Gemini Sun brings intellectual curiosity and versatility. You thrive on communication, learning, and connecting diverse ideas.",
+      "cancer": "Your Cancer Sun provides deep emotional intelligence and nurturing instincts. You value security, home, and caring for others.",
+      "leo": "Your Leo Sun radiates confidence, creativity, and natural magnetism. You express yourself with warmth, generosity, and dramatic flair.",
+      "virgo": "Your Virgo Sun brings analytical precision and service orientation. You excel at organizing, improving, and attending to important details.",
+      "libra": "Your Libra Sun seeks balance, beauty, and harmonious relationships. You have a natural gift for diplomacy and aesthetic appreciation.",
+      "scorpio": "Your Scorpio Sun provides intense depth and transformational power. You approach life with passion, intuition, and magnetic presence.",
+      "sagittarius": "Your Sagittarius Sun inspires philosophical exploration and adventurous spirit. You seek meaning through travel, learning, and expanding horizons.",
+      "capricorn": "Your Capricorn Sun brings ambitious drive and responsible leadership. You build lasting achievements through discipline and strategic thinking.",
+      "aquarius": "Your Aquarius Sun provides innovative vision and humanitarian ideals. You champion progressive causes and value intellectual freedom.",
+      "pisces": "Your Pisces Sun offers compassionate intuition and creative imagination. You connect deeply with others through empathy and artistic expression."
+    },
+    "moon": {
+      "aries": "Your Aries Moon brings emotional directness and impulsive reactions. You need freedom and excitement to feel emotionally satisfied.",
+      "taurus": "Your Taurus Moon provides emotional stability and comfort-seeking nature. You find security in routine, beauty, and material comforts.",
+      "gemini": "Your Gemini Moon creates emotional curiosity and need for mental stimulation. You process feelings through communication and variety.",
+      "cancer": "Your Cancer Moon intensifies emotional sensitivity and protective instincts. You need emotional security and deep family connections.",
+      "leo": "Your Leo Moon brings dramatic emotional expression and need for recognition. You want to feel special and appreciated for your unique qualities.",
+      "virgo": "Your Virgo Moon creates emotional need for order and usefulness. You feel secure when helping others and organizing your environment.",
+      "libra": "Your Libra Moon seeks emotional harmony and partnership. You need beauty, balance, and cooperative relationships to feel content.",
+      "scorpio": "Your Scorpio Moon provides intense emotional depth and transformational feelings. You need passionate connections and psychological understanding.",
+      "sagittarius": "Your Sagittarius Moon brings emotional optimism and need for adventure. You feel best when exploring new philosophies and experiences.",
+      "capricorn": "Your Capricorn Moon creates emotional reserve and need for achievement. You find security through accomplishment and respect.",
+      "aquarius": "Your Aquarius Moon provides emotional detachment and humanitarian feelings. You need intellectual freedom and progressive community.",
+      "pisces": "Your Pisces Moon brings deep emotional sensitivity and psychic intuition. You need compassion, creativity, and spiritual connection."
+    }
+  },
+  "houses": {
+    "1": "The 1st House represents your identity, appearance, and first impressions. It shows how you present yourself to the world.",
+    "2": "The 2nd House governs your values, possessions, and self-worth. It reveals your relationship with money and material security.",
+    "3": "The 3rd House rules communication, siblings, and local environment. It shows your learning style and daily interactions.",
+    "4": "The 4th House represents home, family, and emotional foundations. It reveals your roots and private self.",
+    "5": "The 5th House governs creativity, romance, and self-expression. It shows your approach to love and artistic pursuits.",
+    "6": "The 6th House rules work, health, and daily routines. It reveals your service orientation and physical well-being habits.",
+    "7": "The 7th House represents partnerships and open enemies. It shows your approach to marriage and one-on-one relationships.",
+    "8": "The 8th House governs transformation, shared resources, and hidden matters. It reveals your relationship with power and regeneration.",
+    "9": "The 9th House rules higher learning, philosophy, and distant travel. It shows your quest for meaning and spiritual beliefs.",
+    "10": "The 10th House represents career, reputation, and public status. It reveals your professional ambitions and social standing.",
+    "11": "The 11th House governs friendships, groups, and future hopes. It shows your social circles and humanitarian ideals.",
+    "12": "The 12th House rules the subconscious, spirituality, and hidden enemies. It reveals your connection to the collective unconscious."
+  },
+  "aspects": {
+    "conjunction": "A conjunction brings intense focus and unified energy between planets. The combined energies work as one powerful force.",
+    "opposition": "An opposition creates tension and awareness through contrast. These planets challenge each other, requiring integration and balance.",
+    "trine": "A trine flows easily with harmonious, supportive energy. These planets work together naturally and beneficially.",
+    "square": "A square generates dynamic tension and growth through challenge. These planets create friction that motivates development.",
+    "sextile": "A sextile provides opportunities for positive expression and cooperation. These planets offer supportive potential when activated."
+  }
+}

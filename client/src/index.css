@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 20%, 6%);
+  --foreground: hsl(210, 40%, 96%);
+  --card: hsl(240, 15%, 10%);
+  --card-foreground: hsl(210, 40%, 92%);
+  --popover: hsl(240, 15%, 12%);
+  --popover-foreground: hsl(210, 40%, 96%);
+  --primary: hsl(45, 93%, 47%);
+  --primary-foreground: hsl(240, 20%, 6%);
+  --secondary: hsl(250, 60%, 30%);
+  --secondary-foreground: hsl(210, 40%, 96%);
+  --muted: hsl(240, 10%, 20%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(260, 70%, 60%);
+  --accent-foreground: hsl(210, 40%, 96%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 96%);
+  --border: hsl(240, 10%, 25%);
+  --input: hsl(240, 10%, 25%);
+  --ring: hsl(45, 93%, 47%);
+  --radius: 12px;
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-mono: Menlo, monospace;
+}
+
+.dark {
+  --background: hsl(240, 20%, 6%);
+  --foreground: hsl(210, 40%, 96%);
+  --card: hsl(240, 15%, 10%);
+  --card-foreground: hsl(210, 40%, 92%);
+  --popover: hsl(240, 15%, 12%);
+  --popover-foreground: hsl(210, 40%, 96%);
+  --primary: hsl(45, 93%, 47%);
+  --primary-foreground: hsl(240, 20%, 6%);
+  --secondary: hsl(250, 60%, 30%);
+  --secondary-foreground: hsl(210, 40%, 96%);
+  --muted: hsl(240, 10%, 20%);
+  --muted-foreground: hsl(215, 20%, 65%);
+  --accent: hsl(260, 70%, 60%);
+  --accent-foreground: hsl(210, 40%, 96%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 96%);
+  --border: hsl(240, 10%, 25%);
+  --input: hsl(240, 10%, 25%);
+  --ring: hsl(45, 93%, 47%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .gradient-border {
+    background: linear-gradient(45deg, hsl(45, 93%, 47%), hsl(260, 70%, 60%));
+    padding: 2px;
+    border-radius: var(--radius);
+  }
+
+  .gradient-border > div {
+    background: var(--card);
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  .chart-wheel {
+    filter: drop-shadow(0 0 20px hsl(45, 93%, 47% / 0.3));
+  }
+
+  .planet-glow {
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+
+  .planet-symbol {
+    transition: all 0.2s ease;
+  }
+
+  .planet-symbol:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px); 
+    }
+    50% { 
+      transform: translateY(-10px); 
+    }
+  }
+}
