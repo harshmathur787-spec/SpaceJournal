@@ -110,12 +110,12 @@ export default function Home() {
                     Quick Overview
                   </h3>
                   <div className="space-y-3">
-                    {selectedChart.planetaryData && Array.isArray(selectedChart.planetaryData) && (
+                    {selectedChart.planetaryData && Array.isArray(selectedChart.planetaryData) ? (
                       <QuickOverview 
                         planetaryData={selectedChart.planetaryData}
                         housesData={selectedChart.housesData}
                       />
-                    )}
+                    ) : null}
                   </div>
                 </div>
               </div>
