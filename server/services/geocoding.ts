@@ -84,15 +84,9 @@ const MOCK_LOCATIONS: LocationResult[] = [
     admin1: "California"
   },
 
-  // India - Major cities across states
-  {
-    name: "Mumbai, Maharashtra, India",
-    latitude: 19.0760,
-    longitude: 72.8777,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Maharashtra"
-  },
+  // India - Comprehensive cities across all states and union territories
+  
+  // Delhi (National Capital Territory)
   {
     name: "Delhi, Delhi, India",
     latitude: 28.7041,
@@ -102,52 +96,46 @@ const MOCK_LOCATIONS: LocationResult[] = [
     admin1: "Delhi"
   },
   {
-    name: "Bangalore, Karnataka, India",
-    latitude: 12.9716,
-    longitude: 77.5946,
+    name: "New Delhi, Delhi, India",
+    latitude: 28.6139,
+    longitude: 77.2090,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Karnataka"
+    admin1: "Delhi"
   },
   {
-    name: "Hyderabad, Telangana, India",
-    latitude: 17.3850,
-    longitude: 78.4867,
+    name: "Gurgaon, Haryana, India",
+    latitude: 28.4595,
+    longitude: 77.0266,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Telangana"
+    admin1: "Haryana"
   },
   {
-    name: "Ahmedabad, Gujarat, India",
-    latitude: 23.0225,
-    longitude: 72.5714,
+    name: "Noida, Uttar Pradesh, India",
+    latitude: 28.5355,
+    longitude: 77.3910,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Gujarat"
+    admin1: "Uttar Pradesh"
   },
   {
-    name: "Chennai, Tamil Nadu, India",
-    latitude: 13.0827,
-    longitude: 80.2707,
+    name: "Faridabad, Haryana, India",
+    latitude: 28.4089,
+    longitude: 77.3178,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Tamil Nadu"
+    admin1: "Haryana"
   },
+
+  // Maharashtra
   {
-    name: "Kolkata, West Bengal, India",
-    latitude: 22.5726,
-    longitude: 88.3639,
+    name: "Mumbai, Maharashtra, India",
+    latitude: 19.0760,
+    longitude: 72.8777,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "West Bengal"
-  },
-  {
-    name: "Surat, Gujarat, India",
-    latitude: 21.1702,
-    longitude: 72.8311,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Gujarat"
+    admin1: "Maharashtra"
   },
   {
     name: "Pune, Maharashtra, India",
@@ -158,13 +146,229 @@ const MOCK_LOCATIONS: LocationResult[] = [
     admin1: "Maharashtra"
   },
   {
-    name: "Jaipur, Rajasthan, India",
-    latitude: 26.9124,
-    longitude: 75.7873,
+    name: "Nagpur, Maharashtra, India",
+    latitude: 21.1458,
+    longitude: 79.0882,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Rajasthan"
+    admin1: "Maharashtra"
   },
+  {
+    name: "Thane, Maharashtra, India",
+    latitude: 19.2183,
+    longitude: 72.9781,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Nashik, Maharashtra, India",
+    latitude: 19.9975,
+    longitude: 73.7898,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Kalyan-Dombivli, Maharashtra, India",
+    latitude: 19.2403,
+    longitude: 73.1305,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Pimpri-Chinchwad, Maharashtra, India",
+    latitude: 18.6298,
+    longitude: 73.7997,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Aurangabad, Maharashtra, India",
+    latitude: 19.8762,
+    longitude: 75.3433,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Solapur, Maharashtra, India",
+    latitude: 17.6599,
+    longitude: 75.9064,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+  {
+    name: "Kolhapur, Maharashtra, India",
+    latitude: 16.7050,
+    longitude: 74.2433,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Maharashtra"
+  },
+
+  // Karnataka
+  {
+    name: "Bangalore, Karnataka, India",
+    latitude: 12.9716,
+    longitude: 77.5946,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+  {
+    name: "Mysore, Karnataka, India",
+    latitude: 12.2958,
+    longitude: 76.6394,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+  {
+    name: "Mangalore, Karnataka, India",
+    latitude: 12.9141,
+    longitude: 74.8560,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+  {
+    name: "Hubli-Dharwad, Karnataka, India",
+    latitude: 15.3647,
+    longitude: 75.1240,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+  {
+    name: "Belgaum, Karnataka, India",
+    latitude: 15.8497,
+    longitude: 74.4977,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+  {
+    name: "Gulbarga, Karnataka, India",
+    latitude: 17.3297,
+    longitude: 76.8343,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Karnataka"
+  },
+
+  // Tamil Nadu
+  {
+    name: "Chennai, Tamil Nadu, India",
+    latitude: 13.0827,
+    longitude: 80.2707,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Coimbatore, Tamil Nadu, India",
+    latitude: 11.0168,
+    longitude: 76.9558,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Madurai, Tamil Nadu, India",
+    latitude: 9.9252,
+    longitude: 78.1198,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Tiruchirappalli, Tamil Nadu, India",
+    latitude: 10.7905,
+    longitude: 78.7047,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Salem, Tamil Nadu, India",
+    latitude: 11.6643,
+    longitude: 78.1460,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Tirunelveli, Tamil Nadu, India",
+    latitude: 8.7139,
+    longitude: 77.7567,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+  {
+    name: "Vellore, Tamil Nadu, India",
+    latitude: 12.9165,
+    longitude: 79.1325,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tamil Nadu"
+  },
+
+  // Gujarat
+  {
+    name: "Ahmedabad, Gujarat, India",
+    latitude: 23.0225,
+    longitude: 72.5714,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+  {
+    name: "Surat, Gujarat, India",
+    latitude: 21.1702,
+    longitude: 72.8311,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+  {
+    name: "Vadodara, Gujarat, India",
+    latitude: 22.3072,
+    longitude: 73.1812,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+  {
+    name: "Rajkot, Gujarat, India",
+    latitude: 22.3039,
+    longitude: 70.8022,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+  {
+    name: "Bhavnagar, Gujarat, India",
+    latitude: 21.7645,
+    longitude: 72.1519,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+  {
+    name: "Jamnagar, Gujarat, India",
+    latitude: 22.4707,
+    longitude: 70.0577,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Gujarat"
+  },
+
+  // Uttar Pradesh
   {
     name: "Lucknow, Uttar Pradesh, India",
     latitude: 26.8467,
@@ -182,68 +386,12 @@ const MOCK_LOCATIONS: LocationResult[] = [
     admin1: "Uttar Pradesh"
   },
   {
-    name: "Nagpur, Maharashtra, India",
-    latitude: 21.1458,
-    longitude: 79.0882,
+    name: "Ghaziabad, Uttar Pradesh, India",
+    latitude: 28.6692,
+    longitude: 77.4538,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Maharashtra"
-  },
-  {
-    name: "Indore, Madhya Pradesh, India",
-    latitude: 22.7196,
-    longitude: 75.8577,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Madhya Pradesh"
-  },
-  {
-    name: "Thane, Maharashtra, India",
-    latitude: 19.2183,
-    longitude: 72.9781,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Maharashtra"
-  },
-  {
-    name: "Bhopal, Madhya Pradesh, India",
-    latitude: 23.2599,
-    longitude: 77.4126,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Madhya Pradesh"
-  },
-  {
-    name: "Visakhapatnam, Andhra Pradesh, India",
-    latitude: 17.6868,
-    longitude: 83.2185,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Andhra Pradesh"
-  },
-  {
-    name: "Pimpri-Chinchwad, Maharashtra, India",
-    latitude: 18.6298,
-    longitude: 73.7997,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Maharashtra"
-  },
-  {
-    name: "Patna, Bihar, India",
-    latitude: 25.5941,
-    longitude: 85.1376,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Bihar"
-  },
-  {
-    name: "Ludhiana, Punjab, India",
-    latitude: 30.9010,
-    longitude: 75.8573,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Punjab"
+    admin1: "Uttar Pradesh"
   },
   {
     name: "Agra, Uttar Pradesh, India",
@@ -254,36 +402,778 @@ const MOCK_LOCATIONS: LocationResult[] = [
     admin1: "Uttar Pradesh"
   },
   {
-    name: "Nashik, Maharashtra, India",
-    latitude: 19.9975,
-    longitude: 73.7898,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Maharashtra"
-  },
-  {
-    name: "Vadodara, Gujarat, India",
-    latitude: 22.3072,
-    longitude: 73.1812,
-    timezone: "Asia/Kolkata",
-    country: "India",
-    admin1: "Gujarat"
-  },
-  {
-    name: "Ghaziabad, Uttar Pradesh, India",
-    latitude: 28.6692,
-    longitude: 77.4538,
+    name: "Meerut, Uttar Pradesh, India",
+    latitude: 28.9845,
+    longitude: 77.7064,
     timezone: "Asia/Kolkata",
     country: "India",
     admin1: "Uttar Pradesh"
   },
   {
-    name: "Kalyan-Dombivli, Maharashtra, India",
-    latitude: 19.2403,
-    longitude: 73.1305,
+    name: "Varanasi, Uttar Pradesh, India",
+    latitude: 25.3176,
+    longitude: 82.9739,
     timezone: "Asia/Kolkata",
     country: "India",
-    admin1: "Maharashtra"
+    admin1: "Uttar Pradesh"
+  },
+  {
+    name: "Allahabad, Uttar Pradesh, India",
+    latitude: 25.4358,
+    longitude: 81.8463,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttar Pradesh"
+  },
+  {
+    name: "Bareilly, Uttar Pradesh, India",
+    latitude: 28.3670,
+    longitude: 79.4304,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttar Pradesh"
+  },
+  {
+    name: "Aligarh, Uttar Pradesh, India",
+    latitude: 27.8974,
+    longitude: 78.0880,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttar Pradesh"
+  },
+  {
+    name: "Moradabad, Uttar Pradesh, India",
+    latitude: 28.8386,
+    longitude: 78.7733,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttar Pradesh"
+  },
+
+  // West Bengal
+  {
+    name: "Kolkata, West Bengal, India",
+    latitude: 22.5726,
+    longitude: 88.3639,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "West Bengal"
+  },
+  {
+    name: "Howrah, West Bengal, India",
+    latitude: 22.5958,
+    longitude: 88.2636,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "West Bengal"
+  },
+  {
+    name: "Durgapur, West Bengal, India",
+    latitude: 23.5204,
+    longitude: 87.3119,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "West Bengal"
+  },
+  {
+    name: "Asansol, West Bengal, India",
+    latitude: 23.6739,
+    longitude: 86.9524,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "West Bengal"
+  },
+  {
+    name: "Siliguri, West Bengal, India",
+    latitude: 26.7271,
+    longitude: 88.3953,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "West Bengal"
+  },
+
+  // Rajasthan
+  {
+    name: "Jaipur, Rajasthan, India",
+    latitude: 26.9124,
+    longitude: 75.7873,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+  {
+    name: "Jodhpur, Rajasthan, India",
+    latitude: 26.2389,
+    longitude: 73.0243,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+  {
+    name: "Udaipur, Rajasthan, India",
+    latitude: 24.5854,
+    longitude: 73.7125,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+  {
+    name: "Kota, Rajasthan, India",
+    latitude: 25.2138,
+    longitude: 75.8648,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+  {
+    name: "Bikaner, Rajasthan, India",
+    latitude: 28.0229,
+    longitude: 73.3119,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+  {
+    name: "Ajmer, Rajasthan, India",
+    latitude: 26.4499,
+    longitude: 74.6399,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Rajasthan"
+  },
+
+  // Madhya Pradesh
+  {
+    name: "Bhopal, Madhya Pradesh, India",
+    latitude: 23.2599,
+    longitude: 77.4126,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Madhya Pradesh"
+  },
+  {
+    name: "Indore, Madhya Pradesh, India",
+    latitude: 22.7196,
+    longitude: 75.8577,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Madhya Pradesh"
+  },
+  {
+    name: "Gwalior, Madhya Pradesh, India",
+    latitude: 26.2183,
+    longitude: 78.1828,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Madhya Pradesh"
+  },
+  {
+    name: "Jabalpur, Madhya Pradesh, India",
+    latitude: 23.1815,
+    longitude: 79.9864,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Madhya Pradesh"
+  },
+  {
+    name: "Ujjain, Madhya Pradesh, India",
+    latitude: 23.1765,
+    longitude: 75.7885,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Madhya Pradesh"
+  },
+
+  // Telangana
+  {
+    name: "Hyderabad, Telangana, India",
+    latitude: 17.3850,
+    longitude: 78.4867,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Telangana"
+  },
+  {
+    name: "Warangal, Telangana, India",
+    latitude: 17.9689,
+    longitude: 79.5941,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Telangana"
+  },
+  {
+    name: "Nizamabad, Telangana, India",
+    latitude: 18.6725,
+    longitude: 78.0941,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Telangana"
+  },
+
+  // Andhra Pradesh
+  {
+    name: "Visakhapatnam, Andhra Pradesh, India",
+    latitude: 17.6868,
+    longitude: 83.2185,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andhra Pradesh"
+  },
+  {
+    name: "Vijayawada, Andhra Pradesh, India",
+    latitude: 16.5062,
+    longitude: 80.6480,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andhra Pradesh"
+  },
+  {
+    name: "Guntur, Andhra Pradesh, India",
+    latitude: 16.3067,
+    longitude: 80.4365,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andhra Pradesh"
+  },
+  {
+    name: "Tirupati, Andhra Pradesh, India",
+    latitude: 13.6288,
+    longitude: 79.4192,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andhra Pradesh"
+  },
+  {
+    name: "Kakinada, Andhra Pradesh, India",
+    latitude: 16.9891,
+    longitude: 82.2475,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andhra Pradesh"
+  },
+
+  // Punjab
+  {
+    name: "Ludhiana, Punjab, India",
+    latitude: 30.9010,
+    longitude: 75.8573,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Punjab"
+  },
+  {
+    name: "Amritsar, Punjab, India",
+    latitude: 31.6340,
+    longitude: 74.8723,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Punjab"
+  },
+  {
+    name: "Jalandhar, Punjab, India",
+    latitude: 31.3260,
+    longitude: 75.5762,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Punjab"
+  },
+  {
+    name: "Patiala, Punjab, India",
+    latitude: 30.3398,
+    longitude: 76.3869,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Punjab"
+  },
+  {
+    name: "Bathinda, Punjab, India",
+    latitude: 30.2110,
+    longitude: 74.9455,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Punjab"
+  },
+
+  // Haryana
+  {
+    name: "Chandigarh, Chandigarh, India",
+    latitude: 30.7333,
+    longitude: 76.7794,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Chandigarh"
+  },
+  {
+    name: "Panipat, Haryana, India",
+    latitude: 29.3909,
+    longitude: 76.9635,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Haryana"
+  },
+  {
+    name: "Ambala, Haryana, India",
+    latitude: 30.3782,
+    longitude: 76.7767,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Haryana"
+  },
+  {
+    name: "Yamunanagar, Haryana, India",
+    latitude: 30.1290,
+    longitude: 77.2674,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Haryana"
+  },
+  {
+    name: "Rohtak, Haryana, India",
+    latitude: 28.8955,
+    longitude: 76.6066,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Haryana"
+  },
+
+  // Bihar
+  {
+    name: "Patna, Bihar, India",
+    latitude: 25.5941,
+    longitude: 85.1376,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Bihar"
+  },
+  {
+    name: "Gaya, Bihar, India",
+    latitude: 24.7914,
+    longitude: 85.0002,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Bihar"
+  },
+  {
+    name: "Bhagalpur, Bihar, India",
+    latitude: 25.2425,
+    longitude: 86.9842,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Bihar"
+  },
+  {
+    name: "Muzaffarpur, Bihar, India",
+    latitude: 26.1209,
+    longitude: 85.3647,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Bihar"
+  },
+  {
+    name: "Purnia, Bihar, India",
+    latitude: 25.7781,
+    longitude: 87.4753,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Bihar"
+  },
+
+  // Odisha (Orissa)
+  {
+    name: "Bhubaneswar, Odisha, India",
+    latitude: 20.2961,
+    longitude: 85.8245,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Odisha"
+  },
+  {
+    name: "Cuttack, Odisha, India",
+    latitude: 20.4625,
+    longitude: 85.8828,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Odisha"
+  },
+  {
+    name: "Rourkela, Odisha, India",
+    latitude: 22.2604,
+    longitude: 84.8536,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Odisha"
+  },
+  {
+    name: "Berhampur, Odisha, India",
+    latitude: 19.3149,
+    longitude: 84.7941,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Odisha"
+  },
+
+  // Jharkhand
+  {
+    name: "Ranchi, Jharkhand, India",
+    latitude: 23.3441,
+    longitude: 85.3096,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jharkhand"
+  },
+  {
+    name: "Jamshedpur, Jharkhand, India",
+    latitude: 22.8046,
+    longitude: 86.2029,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jharkhand"
+  },
+  {
+    name: "Dhanbad, Jharkhand, India",
+    latitude: 23.7957,
+    longitude: 86.4304,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jharkhand"
+  },
+  {
+    name: "Bokaro, Jharkhand, India",
+    latitude: 23.6693,
+    longitude: 86.1511,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jharkhand"
+  },
+
+  // Chhattisgarh
+  {
+    name: "Raipur, Chhattisgarh, India",
+    latitude: 21.2514,
+    longitude: 81.6296,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Chhattisgarh"
+  },
+  {
+    name: "Bhilai, Chhattisgarh, India",
+    latitude: 21.1938,
+    longitude: 81.3509,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Chhattisgarh"
+  },
+  {
+    name: "Bilaspur, Chhattisgarh, India",
+    latitude: 22.0797,
+    longitude: 82.1409,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Chhattisgarh"
+  },
+  {
+    name: "Korba, Chhattisgarh, India",
+    latitude: 22.3595,
+    longitude: 82.7501,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Chhattisgarh"
+  },
+
+  // Kerala
+  {
+    name: "Thiruvananthapuram, Kerala, India",
+    latitude: 8.5241,
+    longitude: 76.9366,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Kerala"
+  },
+  {
+    name: "Kochi, Kerala, India",
+    latitude: 9.9312,
+    longitude: 76.2673,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Kerala"
+  },
+  {
+    name: "Calicut, Kerala, India",
+    latitude: 11.2588,
+    longitude: 75.7804,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Kerala"
+  },
+  {
+    name: "Thrissur, Kerala, India",
+    latitude: 10.5276,
+    longitude: 76.2144,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Kerala"
+  },
+  {
+    name: "Kollam, Kerala, India",
+    latitude: 8.8932,
+    longitude: 76.6141,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Kerala"
+  },
+
+  // Assam
+  {
+    name: "Guwahati, Assam, India",
+    latitude: 26.1445,
+    longitude: 91.7362,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Assam"
+  },
+  {
+    name: "Silchar, Assam, India",
+    latitude: 24.8333,
+    longitude: 92.7789,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Assam"
+  },
+  {
+    name: "Dibrugarh, Assam, India",
+    latitude: 27.4728,
+    longitude: 94.9120,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Assam"
+  },
+  {
+    name: "Jorhat, Assam, India",
+    latitude: 26.7509,
+    longitude: 94.2037,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Assam"
+  },
+
+  // Himachal Pradesh
+  {
+    name: "Shimla, Himachal Pradesh, India",
+    latitude: 31.1048,
+    longitude: 77.1734,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Himachal Pradesh"
+  },
+  {
+    name: "Dharamshala, Himachal Pradesh, India",
+    latitude: 32.2190,
+    longitude: 76.3234,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Himachal Pradesh"
+  },
+  {
+    name: "Kullu, Himachal Pradesh, India",
+    latitude: 31.9578,
+    longitude: 77.1101,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Himachal Pradesh"
+  },
+  {
+    name: "Manali, Himachal Pradesh, India",
+    latitude: 32.2396,
+    longitude: 77.1887,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Himachal Pradesh"
+  },
+
+  // Uttarakhand
+  {
+    name: "Dehradun, Uttarakhand, India",
+    latitude: 30.3165,
+    longitude: 78.0322,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttarakhand"
+  },
+  {
+    name: "Haridwar, Uttarakhand, India",
+    latitude: 29.9457,
+    longitude: 78.1642,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttarakhand"
+  },
+  {
+    name: "Nainital, Uttarakhand, India",
+    latitude: 29.3803,
+    longitude: 79.4636,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttarakhand"
+  },
+  {
+    name: "Rishikesh, Uttarakhand, India",
+    latitude: 30.0869,
+    longitude: 78.2676,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Uttarakhand"
+  },
+
+  // Jammu and Kashmir
+  {
+    name: "Srinagar, Jammu and Kashmir, India",
+    latitude: 34.0837,
+    longitude: 74.7973,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jammu and Kashmir"
+  },
+  {
+    name: "Jammu, Jammu and Kashmir, India",
+    latitude: 32.7266,
+    longitude: 74.8570,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Jammu and Kashmir"
+  },
+  {
+    name: "Leh, Ladakh, India",
+    latitude: 34.1526,
+    longitude: 77.5771,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Ladakh"
+  },
+
+  // Goa
+  {
+    name: "Panaji, Goa, India",
+    latitude: 15.4909,
+    longitude: 73.8278,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Goa"
+  },
+  {
+    name: "Margao, Goa, India",
+    latitude: 15.2700,
+    longitude: 73.9500,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Goa"
+  },
+  {
+    name: "Vasco da Gama, Goa, India",
+    latitude: 15.3958,
+    longitude: 73.8313,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Goa"
+  },
+
+  // Union Territories
+  {
+    name: "Puducherry, Puducherry, India",
+    latitude: 11.9416,
+    longitude: 79.8083,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Puducherry"
+  },
+  {
+    name: "Port Blair, Andaman and Nicobar Islands, India",
+    latitude: 11.6234,
+    longitude: 92.7265,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Andaman and Nicobar Islands"
+  },
+  {
+    name: "Kavaratti, Lakshadweep, India",
+    latitude: 10.5669,
+    longitude: 72.6420,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Lakshadweep"
+  },
+  {
+    name: "Daman, Daman and Diu, India",
+    latitude: 20.4283,
+    longitude: 72.8397,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Daman and Diu"
+  },
+  {
+    name: "Silvassa, Dadra and Nagar Haveli, India",
+    latitude: 20.2738,
+    longitude: 73.0260,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Dadra and Nagar Haveli"
+  },
+
+  // Northeast States
+  {
+    name: "Shillong, Meghalaya, India",
+    latitude: 25.5788,
+    longitude: 91.8933,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Meghalaya"
+  },
+  {
+    name: "Imphal, Manipur, India",
+    latitude: 24.8170,
+    longitude: 93.9368,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Manipur"
+  },
+  {
+    name: "Agartala, Tripura, India",
+    latitude: 23.8315,
+    longitude: 91.2868,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Tripura"
+  },
+  {
+    name: "Aizawl, Mizoram, India",
+    latitude: 23.7367,
+    longitude: 92.7173,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Mizoram"
+  },
+  {
+    name: "Kohima, Nagaland, India",
+    latitude: 25.6751,
+    longitude: 94.1086,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Nagaland"
+  },
+  {
+    name: "Itanagar, Arunachal Pradesh, India",
+    latitude: 27.0844,
+    longitude: 93.6053,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Arunachal Pradesh"
+  },
+  {
+    name: "Gangtok, Sikkim, India",
+    latitude: 27.3389,
+    longitude: 88.6065,
+    timezone: "Asia/Kolkata",
+    country: "India",
+    admin1: "Sikkim"
   },
 
   // UK

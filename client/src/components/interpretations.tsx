@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Star, Moon, ArrowUp } from "lucide-react";
+import { BookOpen, Star, Moon, ArrowUp, ChevronDown, ChevronUp } from "lucide-react";
 import type { NatalChart, PlanetPosition } from "@shared/schema";
 import interpretations from "../../../server/data/interpretations.json";
 
@@ -8,6 +9,7 @@ interface InterpretationsProps {
 }
 
 export default function Interpretations({ chart }: InterpretationsProps) {
+  const [showComplete, setShowComplete] = useState(false);
   const planets = chart.planetaryData as PlanetPosition[] | null;
   
   if (!planets || !Array.isArray(planets)) {
@@ -108,7 +110,7 @@ export default function Interpretations({ chart }: InterpretationsProps) {
             )}
 
             {/* Additional Planetary Interpretations */}
-            {planets.slice(2, 5).map((planet) => (
+            {planets.slice(2, showComplete ? planets.length : 5).map((planet) => (
               <div 
                 key={planet.name}
                 className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors"
@@ -118,11 +120,12 @@ export default function Interpretations({ chart }: InterpretationsProps) {
                   <span className="text-2xl mr-3">{planet.symbol}</span>
                   <div>
                     <h3 className="font-semibold capitalize">{planet.name} in {planet.zodiacSign}</h3>
-                    <p className="text-sm text-muted-foreground">House {planet.house}</p>
+                    <p className="text-sm text-muted-foreground">House {planet.house}{planet.isRetrograde ? " ℞" : ""}</p>
                   </div>
                 </div>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   Your {planet.name} in {planet.zodiacSign} brings unique energy to your personality and life path.
+                  {planet.isRetrograde && " This planet appears to move backward, adding introspective energy."}
                 </p>
                 <div className="mt-3 text-xs text-muted-foreground">
                   {getHouseInterpretation(planet.house)}
@@ -134,11 +137,13 @@ export default function Interpretations({ chart }: InterpretationsProps) {
           {/* Expand Button */}
           <div className="text-center mt-6">
             <Button 
+              onClick={() => setShowComplete(!showComplete)}
               className="px-6 py-3 bg-gradient-to-r from-secondary to-accent text-secondary-foreground hover:shadow-lg hover:shadow-accent/25 transition-all"
               data-testid="button-complete-interpretation"
             >
               <BookOpen className="w-4 h-4 mr-2" />
-              Read Complete Interpretation
+              {showComplete ? "Show Less" : "Read Complete Interpretation"}
+              {showComplete ? <ChevronUp className="w-4 h-4 ml-2" /> : <ChevronDown className="w-4 h-4 ml-2" />}
             </Button>
           </div>
         </div>
