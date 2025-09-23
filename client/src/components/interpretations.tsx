@@ -2,17 +2,149 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Star, Moon, ArrowUp, ChevronDown, ChevronUp } from "lucide-react";
 import type { NatalChart, PlanetPosition } from "@shared/schema";
-import interpretations from "../../../server/data/interpretations.json";
 
-// Helper function to get ordinal suffix
-function getOrdinal(num: number): string {
-  if (num >= 11 && num <= 13) return `${num}th`;
-  switch (num % 10) {
-    case 1: return `${num}st`;
-    case 2: return `${num}nd`;
-    case 3: return `${num}rd`;
-    default: return `${num}th`;
+// User's personalized interpretations system
+function signPersonality(sign: string){
+  const map: Record<string, string> = {
+    Aries: "dynamic, pioneering and direct. You prefer action and quick decisions.",
+    Taurus: "steady, patient and value security. You seek comfort and practical results.",
+    Gemini: "curious, communicative and adaptable. Ideas and connections energize you.",
+    Cancer: "sensitive, nurturing and protective. Home and emotional bonds matter deeply.",
+    Leo: "confident, expressive and warm-hearted. You shine when noticed and admired.",
+    Virgo: "detail-focused, analytical and service-oriented. You find strength in routines.",
+    Libra: "diplomatic, harmony-seeking and partnership-oriented. Balance guides you.",
+    Scorpio: "intense, transformative and perceptive. You probe beneath the surface.",
+    Sagittarius: "optimistic, freedom-loving and philosophical. You grow through exploration.",
+    Capricorn: "disciplined, responsible and goal-oriented. Long-term planning suits you.",
+    Aquarius: "innovative, humanitarian and original. Community and ideas excite you.",
+    Pisces: "imaginative, compassionate and intuitive. Creativity and empathy guide you."
+  };
+  return map[sign] || "";
+}
+
+function degreeTone(deg: number){
+  if(deg < 10) return "fresh and pioneering";
+  if(deg < 20) return "steady and developing";
+  return "mature and fully expressed";
+}
+
+function elementFromSign(sign: string){
+  const elements: Record<string, string> = {
+    Aries:"Fire", Leo:"Fire", Sagittarius:"Fire",
+    Taurus:"Earth", Virgo:"Earth", Capricorn:"Earth",
+    Gemini:"Air", Libra:"Air", Aquarius:"Air",
+    Cancer:"Water", Scorpio:"Water", Pisces:"Water"
+  };
+  return elements[sign] || "";
+}
+
+function sunRemedyText(sign: string){
+  const map: Record<string, string> = {
+    Aries: "Channel energy into disciplined physical activity and donate red fruit on Tuesdays.",
+    Taurus: "Practice mindful saving and keep a small silver object in your wallet.",
+    Gemini: "Speak affirmations daily; keep a small notebook for ideas.",
+    Cancer: "Create a cozy evening ritual; light a lamp each Monday.",
+    Leo: "Practice gratitude and wear yellow/gold on key days.",
+    Virgo: "Organize one task daily; offer pulses on Saturdays for steady gains.",
+    Libra: "Seek fairness in relationships; light incense in the evening.",
+    Scorpio: "Transform through controlled journaling; offer red flowers on Tuesdays.",
+    Sagittarius: "Plan short learning trips and donate yellow lentils on Thursdays.",
+    Capricorn: "Set long-term milestones and help someone monthly.",
+    Aquarius: "Engage in a community project; carry a blue token for inspiration.",
+    Pisces: "Keep a creative practice and a small bowl of clean water by your bed."
+  };
+  return map[sign] || "";
+}
+
+function moonRemedyText(sign: string){
+  const map: Record<string, string> = {
+    Aries: "Try calming breathwork before sleep.",
+    Taurus: "Place a gentle light or rose quartz near your bed.",
+    Gemini: "Write your feelings nightly for clarity.",
+    Cancer: "Keep photos of loved ones and drink warm milk sometimes.",
+    Leo: "Take nature walks to relax the emotions.",
+    Virgo: "Limit screen time before bed and keep a tidy sleep space.",
+    Libra: "Use soft scents and comfort textures to soothe mood.",
+    Scorpio: "Take a weekly relaxing saltwater soak.",
+    Sagittarius: "Keep a gratitude list and read it weekly.",
+    Capricorn: "Short walks after meals help stabilize mood.",
+    Aquarius: "Use calming instrumental music at night.",
+    Pisces: "Practice visualization before sleep."
+  };
+  return map[sign] || "";
+}
+
+function ascRemedyText(sign: string){
+  const map: Record<string, string> = {
+    Aries: "Begin days with movement; set bold micro-goals.",
+    Taurus: "Place a money plant in the SE of your home and manage finances thoughtfully.",
+    Gemini: "Carry a pen and capture ideas; wear communicative colors.",
+    Cancer: "Create a comforting home corner and keep soft lighting.",
+    Leo: "Use affirmations and visible goal-tracking in warm tones.",
+    Virgo: "Plan and organize each morning; use herbal teas for focus.",
+    Libra: "Invest in pleasant presentation; balance work and play.",
+    Scorpio: "Practice introspection rituals and carry a symbolic red thread.",
+    Sagittarius: "Plan monthly adventures and keep travel mementos visible.",
+    Capricorn: "Have a consistent morning routine and mentor someone.",
+    Aquarius: "Join group activities and act on one new idea monthly.",
+    Pisces: "Keep a creative corner and schedule weekly creative time."
+  };
+  return map[sign] || "";
+}
+
+function buildDetailedInterpretation(natal: any){
+  const sun = natal.sun.zodiac.sign;
+  const sunDeg = natal.sun.zodiac.deg;
+  const moon = natal.moon.zodiac.sign;
+  const moonDeg = natal.moon.zodiac.deg;
+  const asc = natal.ascendant.zodiac.sign;
+  const ascDeg = natal.ascendant.zodiac.deg;
+
+  let out = "";
+  out += "Overview:\n";
+  out += `Your chart shows a Sun in ${sun} (${sunDeg.toFixed(1)}°) which indicates you are ${signPersonality(sun)} This Sun is ${degreeTone(sunDeg)} in its expression.\n\n`;
+
+  out += "Emotional nature:\n";
+  out += `With Moon in ${moon} (${moonDeg.toFixed(1)}°), your emotional life is ${signPersonality(moon)} The Moon here is ${degreeTone(moonDeg)}, shaping how you comfort and respond.\n\n`;
+
+  out += "Outer personality & approach to life:\n";
+  out += `Your Ascendant (rising sign) is ${asc} (${ascDeg.toFixed(1)}°) — this colors first impressions. You come across as ${signPersonality(asc)} The Ascendant tone is ${degreeTone(ascDeg)}.\n\n`;
+
+  const sunElem = elementFromSign(sun);
+  const moonElem = elementFromSign(moon);
+  const ascElem = elementFromSign(asc);
+  out += "Elemental balance:\n";
+  out += `Sun (${sunElem}), Moon (${moonElem}) and Ascendant (${ascElem}) form the primary element mix of your chart. `;
+  out += `If two or more are the same element, that element is prominent. `;
+  if(sunElem === moonElem && moonElem === ascElem){
+    out += `Your chart is strongly ${sunElem}-weighted — this gives a clear, focused flavor to your personality that intensifies strengths and challenges associated with ${sunElem}. `;
+  } else {
+    out += `You have a mix of elements that brings nuance: ${sunElem}, ${moonElem}, and ${ascElem} together create a blended temperament. `;
   }
+  out += "\n\n";
+
+  out += "How these energies interact & practical advice:\n";
+  out += `When your Sun's purpose (identity) combines with your Moon's needs (emotion) and your Ascendant's approach (first impressions), you create a unique life pattern. `;
+  out += `Practical advice: honor your emotional needs (Moon) while acting on your Sun's goals in small steady steps. Let your Ascendant guide how you present yourself — for example, if your Ascendant is ${asc}, use its strengths in first meetings.\n\n`;
+
+  out += "Personalized Remedies to increase luck & balance:\n";
+  const sunRem = sunRemedyText(sun);
+  const moonRem = moonRemedyText(moon);
+  const ascRem = ascRemedyText(asc);
+  out += `Sun remedy: ${sunRem}\n`;
+  out += `Moon remedy: ${moonRem}\n`;
+  out += `Ascendant remedy: ${ascRem}\n`;
+  out += "\n";
+
+  out += "3-step roadmap for the next 3 months:\n";
+  out += `1) Focus on a single meaningful goal that aligns with your Sun in ${sun} (small daily progress).\n`;
+  out += `2) Support emotional balance with a weekly practice tailored to your Moon in ${moon}.\n`;
+  out += `3) Use your Ascendant in ${asc} as a lens for first impressions — update your resume/online profile accordingly.\n\n`;
+
+  out += "Closing note:\n";
+  out += "This interpretation is generated from your Sun, Moon, and Ascendant placements and uses simplified astronomical calculations. For deeper precision (houses, aspects, nodes, full ephemeris) consider a pro chart via Swiss Ephemeris. Use these insights as practical, everyday guidance.\n";
+
+  return out;
 }
 
 interface InterpretationsProps {
@@ -20,107 +152,88 @@ interface InterpretationsProps {
 }
 
 export default function Interpretations({ chart }: InterpretationsProps) {
-  const [showComplete, setShowComplete] = useState(false);
   const planets = chart.planetaryData as PlanetPosition[] | null;
+  const houses = chart.housesData as any[] | null;
   
-  if (!planets || !Array.isArray(planets)) {
+  if (!planets || !Array.isArray(planets) || !houses) {
     return null;
   }
 
   const sun = planets.find(p => p.name === "sun");
   const moon = planets.find(p => p.name === "moon");
-  const houses = chart.housesData as any[] | null;
   const ascendant = houses?.[0]; // First house cusp is the ascendant
 
-  // Generate real personalized summary with specific planetary insights
-  const getPersonalizedSummary = () => {
-    if (!planets || planets.length === 0) return "Chart data not available";
-    
-    let insights: string[] = [];
-    
-    // Analyze specific planetary positions
-    planets.forEach(planet => {
-      const planetName = planet.name.charAt(0).toUpperCase() + planet.name.slice(1);
-      const sign = planet.zodiacSign.charAt(0).toUpperCase() + planet.zodiacSign.slice(1);
-      const house = planet.house;
+  if (!sun || !moon || !ascendant) {
+    return null;
+  }
+
+  // Build natal object for the interpretation function
+  const natal = {
+    sun: {
+      zodiac: {
+        sign: sun.zodiacSign.charAt(0).toUpperCase() + sun.zodiacSign.slice(1),
+        deg: sun.zodiacDegree || 0
+      }
+    },
+    moon: {
+      zodiac: {
+        sign: moon.zodiacSign.charAt(0).toUpperCase() + moon.zodiacSign.slice(1),
+        deg: moon.zodiacDegree || 0
+      }
+    },
+    ascendant: {
+      zodiac: {
+        sign: ascendant.zodiacSign.charAt(0).toUpperCase() + ascendant.zodiacSign.slice(1),
+        deg: ascendant.degree || 0
+      }
+    }
+  };
+
+  // Generate the complete personalized interpretation
+  const detailedInterpretation = buildDetailedInterpretation(natal);
+
+  // Format the interpretation text with proper line breaks and sections
+  const formatInterpretation = (text: string) => {
+    return text.split('\n').map((line, index) => {
+      if (line.trim() === '') return <br key={index} />;
       
-      // Generate specific insights based on planet-house combinations
-      if (planet.name === "sun") {
-        if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you naturally confident and leadership-oriented, but you may come across as too strong to others.`);
-        else if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house gives you natural authority and career success, but you may struggle with work-life balance.`);
-        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house means you define yourself through relationships, but may lose your identity in partnerships.`);
-        else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house makes you highly intuitive and spiritual, but you may struggle with self-confidence.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences your core identity in unique ways.`);
+      // Check if this is a section header (ends with ':')
+      if (line.trim().endsWith(':')) {
+        return (
+          <h4 key={index} className="font-semibold text-primary mt-6 mb-3 first:mt-0">
+            {line.replace(':', '')}
+          </h4>
+        );
       }
       
-      if (planet.name === "moon") {
-        if (house === 4) insights.push(`Your ${planetName} in ${sign} in the 4th house makes you deeply emotional and family-oriented, but you may be overly sensitive to criticism.`);
-        else if (house === 8) insights.push(`Your ${planetName} in ${sign} in the 8th house gives you powerful intuition and emotional depth, but you may struggle with trust issues.`);
-        else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house makes you excellent with groups and friendships, but you may neglect intimate relationships.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house shapes your emotional patterns and needs.`);
+      // Check if this is a numbered list item
+      if (line.match(/^\d+\)/)) {
+        return (
+          <p key={index} className="text-muted-foreground leading-relaxed mb-2 ml-4">
+            <span className="font-medium text-accent">{line.split(')')[0]})</span>
+            {line.substring(line.indexOf(')') + 1)}
+          </p>
+        );
       }
       
-      if (planet.name === "mars") {
-        if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you a natural fighter with high energy, but you may be too aggressive or impatient.`);
-        else if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house gives you mental strength and communication power, but you may be argumentative or restless.`);
-        else if (house === 6) insights.push(`Your ${planetName} in ${sign} in the 6th house makes you hardworking and disciplined, but you may be overly critical or stressed about details.`);
-        else if (house === 12) insights.push(`Your ${planetName} in ${sign} in the 12th house gives you hidden strength and spiritual warrior qualities, but you may suppress your anger unhealthily.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences how you take action and assert yourself.`);
+      // Check if this is a remedy line
+      if (line.includes('remedy:')) {
+        const [label, ...rest] = line.split(':');
+        return (
+          <p key={index} className="text-muted-foreground leading-relaxed mb-2">
+            <span className="font-medium text-accent">{label}:</span>
+            {rest.join(':')}
+          </p>
+        );
       }
       
-      if (planet.name === "venus") {
-        if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house gives you natural ability to attract money and luxury, but you may overspend or be materialistic.`);
-        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house makes you charming and attractive to partners, but you may become too dependent on relationships.`);
-        else if (house === 5) insights.push(`Your ${planetName} in ${sign} in the 5th house gives you artistic talents and romantic nature, but you may be overly dramatic in love.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house influences your values and relationship style.`);
-      }
-      
-      if (planet.name === "mercury") {
-        if (house === 3) insights.push(`Your ${planetName} in ${sign} in the 3rd house makes you an excellent communicator and quick thinker, but you may talk too much or spread gossip.`);
-        else if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house gives you wisdom and teaching abilities, but you may be preachy or dogmatic.`);
-        else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you intelligent and articulate, but you may overthink or appear nervous.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house shapes how you think and communicate.`);
-      }
-      
-      if (planet.name === "jupiter") {
-        if (house === 9) insights.push(`Your ${planetName} in ${sign} in the 9th house brings natural wisdom and good fortune through higher learning, but you may be overconfident or judgmental.`);
-        else if (house === 2) insights.push(`Your ${planetName} in ${sign} in the 2nd house attracts wealth and abundance, but you may become greedy or overindulgent.`);
-        else if (house === 11) insights.push(`Your ${planetName} in ${sign} in the 11th house brings luck through friendships and networks, but you may have unrealistic expectations.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house brings expansion and opportunities to that life area.`);
-      }
-      
-      if (planet.name === "saturn") {
-        if (house === 10) insights.push(`Your ${planetName} in ${sign} in the 10th house demands hard work for career success but brings lasting achievement and respect.`);
-        else if (house === 7) insights.push(`Your ${planetName} in ${sign} in the 7th house may delay marriage but brings mature, stable partnerships when ready.`);
-        else if (house === 1) insights.push(`Your ${planetName} in ${sign} in the 1st house makes you serious and responsible but may cause self-doubt or appearing too stern.`);
-        else insights.push(`Your ${planetName} in ${sign} in the ${getOrdinal(house)} house teaches important life lessons through challenges in that area.`);
-      }
+      // Regular paragraph
+      return (
+        <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+          {line}
+        </p>
+      );
     });
-    
-    // Take the most significant insights (limit to 3-4 for readability)
-    return insights.slice(0, 3).join(" ");
-  };
-
-  const getSunInterpretation = () => {
-    if (!sun) return "Sun position not available";
-    return interpretations.planets.sun[sun.zodiacSign as keyof typeof interpretations.planets.sun] || 
-           "Interpretation not available for this sign";
-  };
-
-  const getMoonInterpretation = () => {
-    if (!moon) return "Moon position not available";
-    return interpretations.planets.moon[moon.zodiacSign as keyof typeof interpretations.planets.moon] || 
-           "Interpretation not available for this sign";
-  };
-
-  const getAscendantInterpretation = () => {
-    if (!ascendant) return "Rising sign not available";
-    return `With ${ascendant.zodiacSign} rising, you project ${ascendant.zodiacSign} energy to the world.`;
-  };
-
-  const getHouseInterpretation = (houseNumber: number) => {
-    return interpretations.houses[houseNumber.toString() as keyof typeof interpretations.houses] || 
-           "House interpretation not available";
   };
 
   return (
@@ -131,108 +244,56 @@ export default function Interpretations({ chart }: InterpretationsProps) {
             Detailed Astrological Interpretation
           </h2>
           
-          {/* Personalized Summary */}
-          <div className="mb-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-6 border border-primary/20" data-testid="personalized-summary">
-            <h3 className="text-lg font-semibold mb-4 text-center">Your Personalized Astrological Summary</h3>
-            <p className="text-muted-foreground leading-relaxed text-center italic">
-              {getPersonalizedSummary()}
-            </p>
+          {/* Personalized Complete Interpretation */}
+          <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-8 border border-primary/20" data-testid="detailed-interpretation">
+            <div className="prose prose-sm max-w-none">
+              {formatInterpretation(detailedInterpretation)}
+            </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Sun Sign Interpretation */}
-            {sun && (
-              <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="sun-interpretation">
-                <div className="flex items-center mb-4">
-                  <Star className="w-6 h-6 text-amber-400 mr-3" />
-                  <div>
-                    <h3 className="font-semibold capitalize">Sun in {sun.zodiacSign}</h3>
-                    <p className="text-sm text-muted-foreground">House {sun.house}</p>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {getSunInterpretation()}
-                </p>
-                <div className="mt-3 text-xs text-muted-foreground">
-                  {getHouseInterpretation(sun.house)}
+          {/* Quick Reference Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {/* Sun Reference */}
+            <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="sun-reference">
+              <div className="flex items-center mb-4">
+                <Star className="w-6 h-6 text-amber-400 mr-3" />
+                <div>
+                  <h3 className="font-semibold">Sun in {natal.sun.zodiac.sign}</h3>
+                  <p className="text-sm text-muted-foreground">{natal.sun.zodiac.deg.toFixed(1)}° - {degreeTone(natal.sun.zodiac.deg)}</p>
                 </div>
               </div>
-            )}
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Core identity: {signPersonality(natal.sun.zodiac.sign)}
+              </p>
+            </div>
 
-            {/* Moon Sign Interpretation */}
-            {moon && (
-              <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="moon-interpretation">
-                <div className="flex items-center mb-4">
-                  <Moon className="w-6 h-6 text-blue-300 mr-3" />
-                  <div>
-                    <h3 className="font-semibold capitalize">Moon in {moon.zodiacSign}</h3>
-                    <p className="text-sm text-muted-foreground">House {moon.house}</p>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {getMoonInterpretation()}
-                </p>
-                <div className="mt-3 text-xs text-muted-foreground">
-                  {getHouseInterpretation(moon.house)}
+            {/* Moon Reference */}
+            <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="moon-reference">
+              <div className="flex items-center mb-4">
+                <Moon className="w-6 h-6 text-blue-300 mr-3" />
+                <div>
+                  <h3 className="font-semibold">Moon in {natal.moon.zodiac.sign}</h3>
+                  <p className="text-sm text-muted-foreground">{natal.moon.zodiac.deg.toFixed(1)}° - {degreeTone(natal.moon.zodiac.deg)}</p>
                 </div>
               </div>
-            )}
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Emotional nature: {signPersonality(natal.moon.zodiac.sign)}
+              </p>
+            </div>
 
-            {/* Rising Sign Interpretation */}
-            {ascendant && (
-              <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="ascendant-interpretation">
-                <div className="flex items-center mb-4">
-                  <ArrowUp className="w-6 h-6 text-green-400 mr-3" />
-                  <div>
-                    <h3 className="font-semibold capitalize">{ascendant.zodiacSign} Rising</h3>
-                    <p className="text-sm text-muted-foreground">1st House</p>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {getAscendantInterpretation()}
-                </p>
-                <div className="mt-3 text-xs text-muted-foreground">
-                  {getHouseInterpretation(1)}
+            {/* Ascendant Reference */}
+            <div className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors" data-testid="ascendant-reference">
+              <div className="flex items-center mb-4">
+                <ArrowUp className="w-6 h-6 text-green-400 mr-3" />
+                <div>
+                  <h3 className="font-semibold">{natal.ascendant.zodiac.sign} Rising</h3>
+                  <p className="text-sm text-muted-foreground">{natal.ascendant.zodiac.deg.toFixed(1)}° - {degreeTone(natal.ascendant.zodiac.deg)}</p>
                 </div>
               </div>
-            )}
-
-            {/* Additional Planetary Interpretations */}
-            {planets.slice(2, showComplete ? planets.length : 5).map((planet) => (
-              <div 
-                key={planet.name}
-                className="bg-muted/30 rounded-lg p-6 hover:bg-muted/40 transition-colors"
-                data-testid={`${planet.name}-interpretation`}
-              >
-                <div className="flex items-center mb-4">
-                  <span className="text-2xl mr-3">{planet.symbol}</span>
-                  <div>
-                    <h3 className="font-semibold capitalize">{planet.name} in {planet.zodiacSign}</h3>
-                    <p className="text-sm text-muted-foreground">House {planet.house}{planet.isRetrograde ? " ℞" : ""}</p>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Your {planet.name} in {planet.zodiacSign} brings unique energy to your personality and life path.
-                  {planet.isRetrograde && " This planet appears to move backward, adding introspective energy."}
-                </p>
-                <div className="mt-3 text-xs text-muted-foreground">
-                  {getHouseInterpretation(planet.house)}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Expand Button */}
-          <div className="text-center mt-6">
-            <Button 
-              onClick={() => setShowComplete(!showComplete)}
-              className="px-6 py-3 bg-gradient-to-r from-secondary to-accent text-secondary-foreground hover:shadow-lg hover:shadow-accent/25 transition-all"
-              data-testid="button-complete-interpretation"
-            >
-              <BookOpen className="w-4 h-4 mr-2" />
-              {showComplete ? "Show Less" : "Read Complete Interpretation"}
-              {showComplete ? <ChevronUp className="w-4 h-4 ml-2" /> : <ChevronDown className="w-4 h-4 ml-2" />}
-            </Button>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                First impression: {signPersonality(natal.ascendant.zodiac.sign)}
+              </p>
+            </div>
           </div>
         </div>
       </div>
