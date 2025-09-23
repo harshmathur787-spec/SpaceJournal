@@ -10,7 +10,7 @@ import ChartSummary from "@/components/chart-summary";
 import { AdvicePanel } from "@/components/advice-panel";
 import LuckRemedies from "@/components/luck-remedies";
 import { Button } from "@/components/ui/button";
-import { Star, BookOpen, Share2, Menu } from "lucide-react";
+import { Star, BookOpen, Share2, Menu, MessageCircle } from "lucide-react";
 import type { NatalChart } from "@shared/schema";
 
 function QuickOverview({ planetaryData, housesData }: { planetaryData: any, housesData: any }) {
@@ -90,11 +90,33 @@ export default function Home() {
                 <BookOpen className="w-4 h-4 mr-2" />
                 Learn
               </button>
+              <Button 
+                onClick={() => window.open('https://t.me/Astroprediction1719', '_blank')}
+                className="text-muted-foreground hover:text-foreground transition-colors bg-transparent border-0 shadow-none p-0 h-auto font-normal flex items-center"
+                data-testid="button-contact-us"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Contact Us
+              </Button>
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
               </Button>
             </nav>
+            
+            {/* Mobile Navigation */}
+            <div className="md:hidden">
+              <Button 
+                onClick={() => window.open('https://t.me/Astroprediction1719', '_blank')}
+                size="sm"
+                variant="outline"
+                className="text-xs"
+                data-testid="button-contact-us-mobile"
+              >
+                <MessageCircle className="w-3 h-3 mr-1" />
+                Contact
+              </Button>
+            </div>
           </div>
         </div>
       </header>
