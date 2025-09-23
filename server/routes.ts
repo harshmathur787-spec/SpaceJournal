@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { birthDataSchema, locationResultSchema } from "@shared/schema";
 import { calculateNatalChart } from "./services/ephemeris";
 import { geocodeLocation, searchLocations } from "./services/geocoding";
+import { generateLuckRemedies } from "./services/luck-remedies";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Calculate natal chart
@@ -13,6 +14,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Calculate planetary positions, houses, and aspects
       const chartData = await calculateNatalChart(birthData);
+      
+      // Generate personalized luck remedies
+      const luckRemedies = generateLuckRemedies(chartData.planets, chartData.aspects, chartData.houses);
       
       // Store the natal chart
       const natalChart = await storage.createNatalChart({
@@ -28,6 +32,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         planetaryData: chartData.planets,
         housesData: chartData.houses,
         aspectsData: chartData.aspects,
+        luckRemedies: luckRemedies,
       });
 
       res.json({

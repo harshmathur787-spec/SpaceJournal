@@ -190,12 +190,10 @@ export default function Home() {
         ) : null}
 
         {/* Luck & Remedies Section */}
-        {selectedChart && selectedChart.planetaryData && selectedChart.aspectsData && selectedChart.housesData ? (
+        {selectedChart ? (
           <section className="mt-12">
             <LuckRemedies 
-              planets={Array.isArray(selectedChart.planetaryData) ? selectedChart.planetaryData : []}
-              aspects={Array.isArray(selectedChart.aspectsData) ? selectedChart.aspectsData : []}
-              houses={Array.isArray(selectedChart.housesData) ? selectedChart.housesData : []}
+              remedies={Array.isArray(selectedChart.luckRemedies) ? selectedChart.luckRemedies : []}
             />
           </section>
         ) : null}

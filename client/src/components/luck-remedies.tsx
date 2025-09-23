@@ -1,408 +1,85 @@
-import { useMemo } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Gift, Star, Sun, Moon } from "lucide-react";
-import { PlanetPosition, AspectData, HousePosition } from "@shared/schema";
-
-// Helper function to get ordinal suffix
-function getOrdinal(num: number): string {
-  if (num >= 11 && num <= 13) return `${num}th`;
-  switch (num % 10) {
-    case 1: return `${num}st`;
-    case 2: return `${num}nd`;
-    case 3: return `${num}rd`;
-    default: return `${num}th`;
-  }
-}
+import { LuckRemedy } from "@shared/schema";
 
 interface LuckRemediesProps {
-  planets: PlanetPosition[];
-  aspects: AspectData[];
-  houses: HousePosition[];
+  remedies: LuckRemedy[];
 }
 
-interface Remedy {
-  title: string;
-  description: string;
-  practices: string[];
-  icon: any;
-  color: string;
-}
+// Icon mapping
+const iconMap = {
+  gift: Gift,
+  star: Star,
+  sparkles: Sparkles,
+  sun: Sun,
+  moon: Moon,
+};
 
-export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesProps) {
-  const remedies = useMemo(() => {
-    const remedyList: Remedy[] = [];
-    
-    // Analyze planetary positions for specific remedies
-    planets.forEach(planet => {
-      const planetName = planet.name.charAt(0).toUpperCase() + planet.name.slice(1);
-      const sign = planet.zodiacSign;
-      const house = planet.house;
-      
-      // Jupiter remedies for luck and wisdom (broadened conditions)
-      if (planet.name === "jupiter") {
-        if (sign === "sagittarius" || sign === "cancer" || sign === "pisces") {
-          remedyList.push({
-            title: `${planetName} Blessings`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings natural luck and expansion through this auspicious placement.`,
-            practices: [
-              `Wear yellow or gold on Thursdays to honor your ${sign} Jupiter`,
-              "Donate to educational causes or temples",
-              "Practice gratitude daily and help those in need",
-              `Focus on ${getOrdinal(house)} house opportunities for growth`
-            ],
-            icon: Gift,
-            color: "text-yellow-600"
-          });
-        } else if (house === 9 || house === 11 || house === 1 || house === 5) {
-          remedyList.push({
-            title: `${planetName} Fortune Enhancement`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for growth and luck through this specific placement.`,
-            practices: [
-              `Light a yellow candle on Thursdays for your ${sign} Jupiter`,
-              "Feed birds or animals regularly",
-              "Practice generosity and charitable giving",
-              `Focus on ${getOrdinal(house)} house themes for abundance`
-            ],
-            icon: Star,
-            color: "text-yellow-600"
-          });
-        } else {
-          // General Jupiter remedy for any other placement
-          remedyList.push({
-            title: `${planetName} Wisdom Activation`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for growth through wisdom and learning.`,
-            practices: [
-              "Read inspiring books on Thursdays",
-              "Practice acts of kindness and generosity",
-              "Wear yellow accessories or clothing",
-              "Seek mentorship or become a mentor"
-            ],
-            icon: Gift,
-            color: "text-yellow-600"
-          });
-        }
-      }
-      
-      // Venus remedies for harmony and attraction (broadened conditions)
-      if (planet.name === "venus") {
-        if (house === 2 || house === 7 || house === 11 || house === 1 || house === 4) {
-          remedyList.push({
-            title: `${planetName} Harmony Ritual`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house enhances attraction and relationships in your unique way.`,
-            practices: [
-              `Wear white or light pink on Fridays to honor your ${sign} Venus`,
-              "Surround yourself with beautiful flowers",
-              `Focus on ${getOrdinal(house)} house themes in relationships`,
-              "Listen to harmonious music daily"
-            ],
-            icon: Sparkles,
-            color: "text-pink-600"
-          });
-        } else if (sign === "taurus" || sign === "libra" || sign === "pisces") {
-          remedyList.push({
-            title: `${planetName} Beauty Enhancement`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural charm and artistic abilities.`,
-            practices: [
-              "Create something beautiful every Friday",
-              "Wear rose quartz or emerald jewelry",
-              "Practice gratitude for life's beauty",
-              "Engage in artistic or creative activities"
-            ],
-            icon: Sparkles,
-            color: "text-pink-600"
-          });
-        } else {
-          // General Venus remedy for any other placement
-          remedyList.push({
-            title: `${planetName} Love & Prosperity`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings opportunities for love, beauty, and material prosperity.`,
-            practices: [
-              "Appreciate beauty in your daily life",
-              "Practice loving-kindness meditation",
-              "Wear pleasant fragrances on Fridays",
-              "Cultivate harmonious relationships"
-            ],
-            icon: Sparkles,
-            color: "text-pink-600"
-          });
-        }
-      }
-      
-      // Sun remedies for confidence and leadership (always generate for Sun)
-      if (planet.name === "sun") {
-        if (house === 1 || house === 9 || house === 10 || house === 5 || house === 11) {
-          remedyList.push({
-            title: `${planetName} Power Activation`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings leadership and authority unique to this powerful placement.`,
-            practices: [
-              `Face the rising sun and honor your ${sign.charAt(0).toUpperCase() + sign.slice(1)} energy`,
-              "Wear red, orange, or copper colors on Sundays",
-              `Focus on ${getOrdinal(house)} house themes in your leadership`,
-              "Light a lamp or candle during sunset"
-            ],
-            icon: Sun,
-            color: "text-orange-600"
-          });
-        } else if (sign === "leo" || sign === "aries" || sign === "sagittarius") {
-          remedyList.push({
-            title: `${planetName} Fire Energy`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural leadership and vitality.`,
-            practices: [
-              "Start your day with sun salutations",
-              "Wear gold or bright colors on Sundays",
-              "Take on leadership roles in your community",
-              "Practice assertiveness with kindness"
-            ],
-            icon: Sun,
-            color: "text-orange-600"
-          });
-        } else {
-          // General Sun remedy for any other placement  
-          remedyList.push({
-            title: `${planetName} Vitality Boost`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings life force energy and personal power unique to this placement.`,
-            practices: [
-              `Spend time in sunlight daily to honor your ${sign} Sun`,
-              "Wear warm colors on Sundays",
-              `Practice positive affirmations about your ${getOrdinal(house)} house themes`,
-              "Engage in activities that boost confidence"
-            ],
-            icon: Sun,
-            color: "text-orange-600"
-          });
-        }
-      }
-      
-      // Moon remedies for intuition and emotional balance (always generate for Moon)
-      if (planet.name === "moon") {
-        if (house === 4 || house === 8 || house === 1 || house === 9 || sign === "cancer") {
-          remedyList.push({
-            title: `${planetName} Intuition Enhancement`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house enhances intuition and emotional depth through this special combination.`,
-            practices: [
-              `Practice moon gazing while connecting with your ${sign} Moon energy`,
-              "Wear white or silver on Mondays",
-              "Keep fresh water near your bed",
-              `Work with ${getOrdinal(house)} house themes in meditation`
-            ],
-            icon: Moon,
-            color: "text-blue-600"
-          });
-        } else if (sign === "scorpio" || sign === "pisces" || sign === "taurus") {
-          remedyList.push({
-            title: `${planetName} Emotional Harmony`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings deep emotional wisdom.`,
-            practices: [
-              "Practice emotional release during full moons",
-              "Keep a dream journal by your bedside",
-              "Wear pearl or moonstone jewelry",
-              "Create a peaceful sanctuary at home"
-            ],
-            icon: Moon,
-            color: "text-blue-600"
-          });
-        } else {
-          // General Moon remedy for any other placement
-          remedyList.push({
-            title: `${planetName} Inner Peace`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings emotional wisdom and intuitive insights specific to this combination.`,
-            practices: [
-              `Practice mindfulness meditation on Mondays, focusing on your ${sign} Moon energy`,
-              "Honor your emotional rhythms",
-              "Wear calming colors like white or blue",
-              `Work with ${getOrdinal(house)} house themes in your emotional healing`
-            ],
-            icon: Moon,
-            color: "text-blue-600"
-          });
-        }
-      }
-      
-      // Mars remedies for energy and courage (broadened conditions)
-      if (planet.name === "mars") {
-        if (sign === "aries" || sign === "scorpio" || house === 1 || house === 6 || house === 10) {
-          remedyList.push({
-            title: `${planetName} Energy Boost`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings courage and vitality in a distinctive way.`,
-            practices: [
-              `Exercise regularly on Tuesdays, channeling your ${sign} Mars energy`,
-              "Wear red coral or red clothing",
-              "Practice martial arts or physical activities",
-              `Apply your energy to ${getOrdinal(house)} house matters`
-            ],
-            icon: Sparkles,
-            color: "text-red-600"
-          });
-        } else {
-          // General Mars remedy for any other placement
-          remedyList.push({
-            title: `${planetName} Action Power`,
-            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${getOrdinal(house)} house brings dynamic energy and the courage to take action in unique ways.`,
-            practices: [
-              `Channel your ${sign} Mars energy into productive activities`,
-              "Practice physical exercise on Tuesdays",
-              "Wear red accessories for confidence",
-              `Take decisive action on ${getOrdinal(house)} house matters`
-            ],
-            icon: Sparkles,
-            color: "text-red-600"
-          });
-        }
-      }
-    });
-    
-    // General remedies based on element emphasis
-    const elementCounts = { fire: 0, earth: 0, air: 0, water: 0 };
-    planets.forEach(planet => {
-      const sign = planet.zodiacSign;
-      if (['aries', 'leo', 'sagittarius'].includes(sign)) elementCounts.fire++;
-      else if (['taurus', 'virgo', 'capricorn'].includes(sign)) elementCounts.earth++;
-      else if (['gemini', 'libra', 'aquarius'].includes(sign)) elementCounts.air++;
-      else if (['cancer', 'scorpio', 'pisces'].includes(sign)) elementCounts.water++;
-    });
-    
-    const totalPlanets = Object.values(elementCounts).reduce((a, b) => a + b, 0);
-    const dominantElement = Object.entries(elementCounts).reduce((a, b) => 
-      elementCounts[a[0] as keyof typeof elementCounts] > elementCounts[b[0] as keyof typeof elementCounts] ? a : b)[0];
-    
-    if (totalPlanets > 0 && elementCounts[dominantElement as keyof typeof elementCounts] / totalPlanets >= 0.4) {
-      if (dominantElement === "fire") {
-        remedyList.push({
-          title: "Fire Element Amplification",
-          description: "Your strong fire element brings leadership and manifestation power.",
-          practices: [
-            "Light candles during prayers or meditation",
-            "Wear red, orange, or bright colors",
-            "Take quick action on your ideas",
-            "Practice sun salutations at dawn"
-          ],
-          icon: Sun,
-          color: "text-red-600"
-        });
-      } else if (dominantElement === "earth") {
-        remedyList.push({
-          title: "Earth Element Grounding",
-          description: "Your strong earth element brings stability and practical wisdom.",
-          practices: [
-            "Spend time in nature and gardens",
-            "Wear brown, green, or earth tones",
-            "Practice grounding meditation barefoot",
-            "Work with crystals and stones"
-          ],
-          icon: Gift,
-          color: "text-green-600"
-        });
-      } else if (dominantElement === "air") {
-        remedyList.push({
-          title: "Air Element Communication",
-          description: "Your strong air element enhances communication and intellect.",
-          practices: [
-            "Practice deep breathing exercises",
-            "Wear light blue or white colors",
-            "Keep learning new skills daily",
-            "Use aromatherapy and incense"
-          ],
-          icon: Star,
-          color: "text-blue-600"
-        });
-      } else if (dominantElement === "water") {
-        remedyList.push({
-          title: "Water Element Intuition",
-          description: "Your strong water element brings deep intuition and healing.",
-          practices: [
-            "Take ritual baths with sea salt",
-            "Wear blue, silver, or flowing fabrics",
-            "Practice water meditation",
-            "Keep fresh flowers near water"
-          ],
-          icon: Moon,
-          color: "text-blue-600"
-        });
-      }
-    }
-    
-    // If no specific remedies found, add general luck remedies
-    if (remedyList.length === 0) {
-      remedyList.push({
-        title: "Universal Luck Enhancement",
-        description: "General remedies to enhance fortune and positive energy.",
-        practices: [
-          "Practice gratitude daily for 5 minutes",
-          "Keep your living space clean and organized", 
-          "Help others without expecting anything in return",
-          "Wear gemstones that resonate with your birth date"
-        ],
-        icon: Sparkles,
-        color: "text-purple-600"
-      });
-    }
-    
-    return remedyList.slice(0, 4); // Limit to 4 remedies for better UI
-  }, [planets, aspects, houses]);
+export default function LuckRemedies({ remedies }: LuckRemediesProps) {
+  // Handle loading state
+  if (!remedies || remedies.length === 0) {
+    return (
+      <div className="space-y-6">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold gradient-text mb-2">Luck Enhancement & Remedies</h2>
+          <p className="text-gray-600 dark:text-gray-400">
+            Personalized remedies to enhance your fortune and positive energy based on your birth chart
+          </p>
+        </div>
+        <div className="text-center py-8">
+          <Sparkles className="h-12 w-12 text-purple-500 mx-auto mb-4 animate-pulse" />
+          <p className="text-gray-600 dark:text-gray-400">Loading your personalized luck remedies...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <section data-testid="luck-remedies-section">
-      <Card className="gradient-border">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-serif bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent flex items-center justify-center gap-2">
-            <Sparkles className="w-6 h-6 text-purple-600" />
-            Luck Enhancement & Remedies
-            <Sparkles className="w-6 h-6 text-purple-600" />
-          </CardTitle>
-          <CardDescription className="text-base">
-            Personalized remedies to enhance your fortune and positive energy based on your birth chart
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" data-testid="remedies-grid">
-            {remedies.map((remedy, index) => {
-              const IconComponent = remedy.icon;
-              return (
-                <div 
-                  key={index}
-                  className="bg-gradient-to-br from-muted/30 to-muted/10 rounded-lg p-6 border border-muted/50 hover:border-purple-300 transition-all"
-                  data-testid={`remedy-card-${index}`}
-                >
-                  <div className="flex items-center mb-4">
-                    <IconComponent className={`w-6 h-6 mr-3 ${remedy.color}`} />
-                    <h3 className="font-semibold text-lg">{remedy.title}</h3>
-                  </div>
-                  
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {remedy.description}
-                  </p>
-                  
-                  <div className="space-y-2">
-                    <h4 className="font-medium text-sm mb-2 flex items-center">
-                      <Badge variant="outline" className="mr-2">Practices</Badge>
-                    </h4>
-                    <ul className="space-y-2">
-                      {remedy.practices.map((practice, practiceIndex) => (
-                        <li 
-                          key={practiceIndex}
-                          className="text-sm flex items-start"
-                          data-testid={`practice-${index}-${practiceIndex}`}
-                        >
-                          <span className="text-purple-600 mr-2">•</span>
-                          <span className="text-muted-foreground">{practice}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold gradient-text mb-2">Luck Enhancement & Remedies</h2>
+        <p className="text-gray-600 dark:text-gray-400">
+          Personalized remedies to enhance your fortune and positive energy based on your birth chart
+        </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+        {remedies.map((remedy, index) => {
+          const IconComponent = iconMap[remedy.iconType];
           
-          <div className="mt-8 p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 rounded-lg border border-purple-200 dark:border-purple-800">
-            <p className="text-sm text-center text-muted-foreground leading-relaxed">
-              <strong>Note:</strong> These remedies are based on traditional astrological wisdom. Practice them with faith and consistency for best results. 
-              Remember that your actions and mindset are the most powerful tools for creating positive change in your life.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    </section>
+          return (
+            <Card key={index} className="border-purple-200 dark:border-purple-800 hover:shadow-md transition-shadow">
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-2">
+                  <IconComponent className={`h-6 w-6 ${remedy.color}`} />
+                  <CardTitle className="text-lg">{remedy.title}</CardTitle>
+                </div>
+                <CardDescription className="text-base">
+                  {remedy.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary" className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200">
+                      Practices
+                    </Badge>
+                  </div>
+                  <ul className="space-y-2">
+                    {remedy.practices.map((practice, practiceIndex) => (
+                      <li key={practiceIndex} className="flex items-start gap-2">
+                        <span className="text-purple-500 mt-1.5 flex-shrink-0">•</span>
+                        <span className="text-sm text-gray-700 dark:text-gray-300">{practice}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+    </div>
   );
 }

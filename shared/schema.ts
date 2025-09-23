@@ -23,6 +23,7 @@ export const natalCharts = pgTable("natal_charts", {
   planetaryData: json("planetary_data"), // Calculated planetary positions
   housesData: json("houses_data"), // House cusps and positions
   aspectsData: json("aspects_data"), // Calculated aspects
+  luckRemedies: json("luck_remedies"), // Personalized luck remedies
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -187,4 +188,13 @@ export interface AdviceResult {
   category: AdviceCategory;
   score: number; // 0-100, calculated from weighted positive/negative effects
   items: AdviceItem[];
+}
+
+// Luck remedy data structure
+export interface LuckRemedy {
+  title: string;
+  description: string;
+  practices: string[];
+  color: string;
+  iconType: "gift" | "star" | "sparkles" | "sun" | "moon";
 }
