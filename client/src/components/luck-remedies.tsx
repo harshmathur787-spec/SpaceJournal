@@ -28,9 +28,9 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
       const sign = planet.zodiacSign;
       const house = planet.house;
       
-      // Jupiter remedies for luck and wisdom
+      // Jupiter remedies for luck and wisdom (broadened conditions)
       if (planet.name === "jupiter") {
-        if (sign === "sagittarius" || sign === "cancer") {
+        if (sign === "sagittarius" || sign === "cancer" || sign === "pisces") {
           remedyList.push({
             title: `${planetName} Blessings`,
             description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural luck and expansion.`,
@@ -43,10 +43,10 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
             icon: Gift,
             color: "text-yellow-600"
           });
-        } else if (house === 9 || house === 11) {
+        } else if (house === 9 || house === 11 || house === 1 || house === 5) {
           remedyList.push({
             title: `${planetName} Fortune Enhancement`,
-            description: `Your ${planetName} in the ${house}th house brings opportunities for growth.`,
+            description: `Your ${planetName} in the ${house}th house brings opportunities for growth and luck.`,
             practices: [
               "Light a yellow candle on Thursdays",
               "Feed birds or animals regularly",
@@ -56,12 +56,26 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
             icon: Star,
             color: "text-yellow-600"
           });
+        } else {
+          // General Jupiter remedy for any other placement
+          remedyList.push({
+            title: `${planetName} Wisdom Activation`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings opportunities for growth through wisdom and learning.`,
+            practices: [
+              "Read inspiring books on Thursdays",
+              "Practice acts of kindness and generosity",
+              "Wear yellow accessories or clothing",
+              "Seek mentorship or become a mentor"
+            ],
+            icon: Gift,
+            color: "text-yellow-600"
+          });
         }
       }
       
-      // Venus remedies for harmony and attraction
+      // Venus remedies for harmony and attraction (broadened conditions)
       if (planet.name === "venus") {
-        if (house === 2 || house === 7 || house === 11) {
+        if (house === 2 || house === 7 || house === 11 || house === 1 || house === 4) {
           remedyList.push({
             title: `${planetName} Harmony Ritual`,
             description: `Your ${planetName} in the ${house}th house enhances attraction and relationships.`,
@@ -74,12 +88,39 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
             icon: Sparkles,
             color: "text-pink-600"
           });
+        } else if (sign === "taurus" || sign === "libra" || sign === "pisces") {
+          remedyList.push({
+            title: `${planetName} Beauty Enhancement`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural charm and artistic abilities.`,
+            practices: [
+              "Create something beautiful every Friday",
+              "Wear rose quartz or emerald jewelry",
+              "Practice gratitude for life's beauty",
+              "Engage in artistic or creative activities"
+            ],
+            icon: Sparkles,
+            color: "text-pink-600"
+          });
+        } else {
+          // General Venus remedy for any other placement
+          remedyList.push({
+            title: `${planetName} Love & Prosperity`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings opportunities for love, beauty, and material prosperity.`,
+            practices: [
+              "Appreciate beauty in your daily life",
+              "Practice loving-kindness meditation",
+              "Wear pleasant fragrances on Fridays",
+              "Cultivate harmonious relationships"
+            ],
+            icon: Sparkles,
+            color: "text-pink-600"
+          });
         }
       }
       
-      // Sun remedies for confidence and leadership
+      // Sun remedies for confidence and leadership (always generate for Sun)
       if (planet.name === "sun") {
-        if (house === 1 || house === 9 || house === 10) {
+        if (house === 1 || house === 9 || house === 10 || house === 5 || house === 11) {
           remedyList.push({
             title: `${planetName} Power Activation`,
             description: `Your ${planetName} in the ${house}th house brings leadership and authority.`,
@@ -92,12 +133,39 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
             icon: Sun,
             color: "text-orange-600"
           });
+        } else if (sign === "leo" || sign === "aries" || sign === "sagittarius") {
+          remedyList.push({
+            title: `${planetName} Fire Energy`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings natural leadership and vitality.`,
+            practices: [
+              "Start your day with sun salutations",
+              "Wear gold or bright colors on Sundays",
+              "Take on leadership roles in your community",
+              "Practice assertiveness with kindness"
+            ],
+            icon: Sun,
+            color: "text-orange-600"
+          });
+        } else {
+          // General Sun remedy for any other placement  
+          remedyList.push({
+            title: `${planetName} Vitality Boost`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings life force energy and personal power unique to this placement.`,
+            practices: [
+              `Spend time in sunlight daily to honor your ${sign} Sun`,
+              "Wear warm colors on Sundays",
+              `Practice positive affirmations about your ${house}th house themes`,
+              "Engage in activities that boost confidence"
+            ],
+            icon: Sun,
+            color: "text-orange-600"
+          });
         }
       }
       
-      // Moon remedies for intuition and emotional balance
+      // Moon remedies for intuition and emotional balance (always generate for Moon)
       if (planet.name === "moon") {
-        if (house === 4 || house === 8 || sign === "cancer") {
+        if (house === 4 || house === 8 || house === 1 || house === 9 || sign === "cancer") {
           remedyList.push({
             title: `${planetName} Intuition Enhancement`,
             description: `Your ${planetName} placement enhances intuition and emotional depth.`,
@@ -110,12 +178,39 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
             icon: Moon,
             color: "text-blue-600"
           });
+        } else if (sign === "scorpio" || sign === "pisces" || sign === "taurus") {
+          remedyList.push({
+            title: `${planetName} Emotional Harmony`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} brings deep emotional wisdom.`,
+            practices: [
+              "Practice emotional release during full moons",
+              "Keep a dream journal by your bedside",
+              "Wear pearl or moonstone jewelry",
+              "Create a peaceful sanctuary at home"
+            ],
+            icon: Moon,
+            color: "text-blue-600"
+          });
+        } else {
+          // General Moon remedy for any other placement
+          remedyList.push({
+            title: `${planetName} Inner Peace`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings emotional wisdom and intuitive insights specific to this combination.`,
+            practices: [
+              `Practice mindfulness meditation on Mondays, focusing on your ${sign} Moon energy`,
+              "Honor your emotional rhythms",
+              "Wear calming colors like white or blue",
+              `Work with ${house}th house themes in your emotional healing`
+            ],
+            icon: Moon,
+            color: "text-blue-600"
+          });
         }
       }
       
-      // Mars remedies for energy and courage
+      // Mars remedies for energy and courage (broadened conditions)
       if (planet.name === "mars") {
-        if (sign === "aries" || house === 1 || house === 6) {
+        if (sign === "aries" || sign === "scorpio" || house === 1 || house === 6 || house === 10) {
           remedyList.push({
             title: `${planetName} Energy Boost`,
             description: `Your ${planetName} placement brings courage and vitality.`,
@@ -124,6 +219,20 @@ export default function LuckRemedies({ planets, aspects, houses }: LuckRemediesP
               "Wear red coral or red clothing",
               "Practice martial arts or physical activities",
               "Donate red items to those in need"
+            ],
+            icon: Sparkles,
+            color: "text-red-600"
+          });
+        } else {
+          // General Mars remedy for any other placement
+          remedyList.push({
+            title: `${planetName} Action Power`,
+            description: `Your ${planetName} in ${sign.charAt(0).toUpperCase() + sign.slice(1)} in the ${house}th house brings dynamic energy and the courage to take action in unique ways.`,
+            practices: [
+              `Channel your ${sign} Mars energy into productive activities`,
+              "Practice physical exercise on Tuesdays",
+              "Wear red accessories for confidence",
+              `Take decisive action on ${house}th house matters`
             ],
             icon: Sparkles,
             color: "text-red-600"
